@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MicroLoan — Admin Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <!-- Top navigation (matches screenshot: brand left, menu center, login/register right) -->
+  <header class="top-nav">
+    <div class="brand">MicroLoan</div>
+
+    <nav class="nav-center">
+      <a href="#" class="nav-item">Dashboard</a>
+      <a href="#" class="nav-item">Users</a>
+      <a href="#" class="nav-item">Loans</a>
+      <a href="#" class="nav-item">Applications</a>
+      <a href="#" class="nav-item">Reports</a>
+    </nav>
+
+    <div class="nav-right">
+      <a href="#" class=" auth Logout">Logout</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Welcome to Admin Dashboard</h1>
+    <p>Manage Loans, Customers, and Users all in one place.</p>
+  </section>
+
+  <!-- Cards -->
+  <main class="cards-wrap">
+    <article class="feature-card">
+      <div class="icon-wrap">
+        <!-- billboard-like svg -->
+        <svg viewBox="0 0 64 64" class="icon" aria-hidden>
+          <rect x="6" y="12" width="52" height="28" rx="2" fill="#ffffff" opacity=".9" />
+          <rect x="14" y="18" width="36" height="16" rx="1.6" fill="#c7e0ff"/>
+          <rect x="30" y="44" width="4" height="8" rx="1" fill="#fff"/>
+          <rect x="28" y="44" width="8" height="4" rx="1" fill="#fff"/>
+        </svg>
+      </div>
+      <h3>Loan Management</h3>
+      <p>Track and manage loan lifecycle easily.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="icon-wrap">
+        <!-- avatar svg -->
+        <svg viewBox="0 0 64 64" class="icon" aria-hidden>
+          <circle cx="32" cy="24" r="12" fill="#bfe0ff"/>
+          <rect x="12" y="38" width="40" height="18" rx="4" fill="#d8aefc"/>
+        </svg>
+      </div>
+      <h3>Customer Records</h3>
+      <p>View and manage customer profiles securely.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="icon-wrap">
+        <!-- user icon -->
+        <svg viewBox="0 0 64 64" class="icon" aria-hidden>
+          <circle cx="32" cy="20" r="12" fill="#000"/>
+          <rect x="16" y="36" width="32" height="14" rx="6" fill="#000"/>
+        </svg>
+      </div>
+      <h3>User Accounts</h3>
+      <p>Administer user roles and permissions.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="icon-wrap">
+        <!-- magnifier -->
+        <svg viewBox="0 0 64 64" class="icon" aria-hidden>
+          <circle cx="26" cy="26" r="12" fill="none" stroke="#000" stroke-width="4"/>
+          <rect x="36" y="36" width="16" height="4" transform="rotate(45 44 38)" fill="#000"/>
+        </svg>
+      </div>
+      <h3>Login</h3>
+      <p>Secure authentication for admins and users.</p>
+    </article>
+  </main>
+
+  <footer class="footer-note">
+    <small>© MicroLoan — Admin Console</small>
+  </footer>
+</body>
+</html>

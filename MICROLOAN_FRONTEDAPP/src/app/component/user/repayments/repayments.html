@@ -1,0 +1,100 @@
+<!-- Repayment panel (Angular template) -->
+<div class="pay-card" role="region" aria-labelledby="repayTitle">
+  <aside class="summary" aria-hidden="false">
+    <div class="brand">
+      <div class="logo">e<span>comm</span>pay</div>
+      <div class="amount">₹ <strong>12,340</strong></div>
+      <div class="currency">Outstanding</div>
+    </div>
+
+    <div class="summary-info">
+      <div class="info-row">
+        <span class="info-label">Next EMI</span>
+        <span class="info-value">₹ 2,500 — Aug 15</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Tenure left</span>
+        <span class="info-value">18 months</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Interest</span>
+        <span class="info-value">9.5% p.a.</span>
+      </div>
+    </div>
+
+    <div class="summary-footer">
+      <small class="muted">Need help? Contact support</small>
+    </div>
+  </aside>
+
+  <div class="form-wrap" role="region" aria-labelledby="repayTitle">
+    <header class="form-header">
+      <h1 id="repayTitle">Select Repayment Method</h1>
+      <p class="sub">Choose a method and complete your payment securely.</p>
+    </header>
+
+    <!-- static form: replace with Angular bindings if needed -->
+    <form class="repay-form" novalidate>
+      <div class="pay-methods" aria-hidden="false">
+        <label class="pill" title="Card">
+          <input type="radio" name="method" checked aria-hidden="true" />
+          <span class="pill-ico">💳</span>
+        </label>
+
+        <label class="pill" title="Visa">
+          <input type="radio" name="method" aria-hidden="true" />
+          <span class="pill-text">VISA</span>
+        </label>
+
+        <label class="pill" title="Apple Pay">
+          <input type="radio" name="method" aria-hidden="true" />
+          <span class="pill-ico"></span>
+        </label>
+
+        <label class="pill" title="PayPal">
+          <input type="radio" name="method" aria-hidden="true" />
+          <span class="pill-text">Pay</span>
+        </label>
+      </div>
+
+      <fieldset class="card-box" aria-label="Card details">
+        <legend class="sr-only">Card information</legend>
+
+        <div class="field">
+          <label for="cardNumber" class="field-label">Card number</label>
+          <input id="cardNumber" name="cardNumber" class="input" inputmode="numeric" placeholder="0000 0000 0000 0000" />
+        </div>
+
+        <div class="field">
+          <label for="cardName" class="field-label">Cardholder</label>
+          <input id="cardName" name="cardName" class="input" placeholder="Full name" />
+        </div>
+
+        <div class="two-up">
+          <div class="field small">
+            <label for="exp" class="field-label">MM/YY</label>
+            <input id="exp" name="exp" class="input" placeholder="MM/YY" />
+          </div>
+
+          <div class="field small">
+            <label for="cvv" class="field-label">CVV</label>
+            <input id="cvv" name="cvv" class="input" placeholder="●●●" inputmode="numeric" />
+          </div>
+        </div>
+
+        <div class="field checkbox">
+          <label><input type="checkbox" /> Save card details for future use</label>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit" class="btn primary" aria-label="Pay now">Pay now</button>
+        <button type="button" class="btn ghost">Cancel</button>
+      </div>
+
+      <div class="note">
+        <small class="muted">Payments are processed securely. We never store full card data on our servers.</small>
+      </div>
+    </form>
+  </div>
+</div>

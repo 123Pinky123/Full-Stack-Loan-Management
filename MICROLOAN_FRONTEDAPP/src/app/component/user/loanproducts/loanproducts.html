@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loan Products — MicroLoan</title>
+  <link rel="stylesheet" href="loanproducts.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">MicroLoan</div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#">Home</a>
+        <a href="#">Loan Products</a>
+        <a href="#">Applications</a>
+        <a href="#">Repayments</a>
+        <a href="#">Notifications</a>
+      </nav>
+
+      <div class="auth">
+        <a class="link" href="#">Login</a>
+        <a class="btn-ghost" href="#">Register</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO: left CTA + right EMI card -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-left">
+        <h1>Apply for a Loan<br /><span class="muted">in Minutes</span></h1>
+        <p class="lead">Fast approvals, flexible tenures — pick a product and apply in few clicks.</p>
+        <div class="hero-cta">
+          <a class="btn-primary" href="#">Apply Now</a>
+        </div>
+      </div>
+
+      <aside class="emi-box" aria-labelledby="emi-title">
+        <div class="emi-card">
+          <label id="emi-title" class="label">Loan Amount</label>
+
+          <!-- inputs-row uses flex with min-width:0 to avoid overflow -->
+          <div class="inputs-row">
+            <input class="input amount" type="text" value="₹ 1,00,000" aria-label="loan-amount" />
+            <input class="input tenure" type="number" value="12" aria-label="tenure-months" />
+          </div>
+
+          <p class="emi">EMI: <strong>₹ 10,000</strong></p>
+          <button class="btn-apply">Apply</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="products-section">
+      <h2 class="section-title">Loan Products</h2>
+
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <article class="product-card">
+          <div class="card-icon icon-blue" aria-hidden>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 7h16v10H4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 7v-2a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Personal Loan</h3>
+          <p class="desc">Flexible options for personal needs — fast disbursal and flexible EMIs.</p>
+          <div class="card-actions">
+            <a class="small-btn" href="#">Details</a>
+            <a class="outline-btn" href="#">Apply</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="product-card">
+          <div class="card-icon icon-teal" aria-hidden>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 2 2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M2 17a8 8 0 0 0 10 4 8 8 0 0 0 10-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Education Loan</h3>
+          <p class="desc">Loans to finance educational expenses with competitive rates.</p>
+          <div class="card-actions">
+            <a class="small-btn" href="#">Details</a>
+            <a class="outline-btn" href="#">Apply</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="product-card">
+          <div class="card-icon icon-purple" aria-hidden>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 13h18v6H3z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 13V8a4 4 0 0 1 8 0v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Business Loan</h3>
+          <p class="desc">Capital to grow your business with tailored repayment plans.</p>
+          <div class="card-actions">
+            <a class="small-btn" href="#">Details</a>
+            <a class="outline-btn" href="#">Apply</a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="product-card">
+          <div class="card-icon icon-orange" aria-hidden>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M3 11.5 12 4l9 7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 21V12h14v9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Home Loan</h3>
+          <p class="desc">Loans for buying or renovating your home with long tenures.</p>
+          <div class="card-actions">
+            <a class="small-btn" href="#">Details</a>
+            <a class="outline-btn" href="#">Apply</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <strong>MicroLoan</strong> — All rights reserved</div>
+      <div class="footer-links">
+        <a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

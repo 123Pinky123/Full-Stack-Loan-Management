@@ -1,0 +1,95 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f0f4f8;
+}
+
+/* Container */
+.reports-container {
+  padding: 30px;
+  min-height: 100vh;
+}
+
+.reports-container h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+/* Cards Container */
+.report-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+/* Individual Card */
+.report-card {
+  background: white;
+  width: 250px;
+  border-radius: 20px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+  position: relative;
+  animation: fadeUp 1s ease-in-out;
+}
+
+.report-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Card Icon */
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  animation: bounce 2s infinite;
+}
+
+/* Card Text */
+.report-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.report-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Colorful Cards */
+.sales { background: linear-gradient(135deg, #ff6a00, #ee0979); color: white; }
+.users { background: linear-gradient(135deg, #6a11cb, #2575fc); color: white; }
+.loans { background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; }
+.finance { background: linear-gradient(135deg, #f7971e, #ffd200); color: white; }
+
+/* Animations */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .report-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}

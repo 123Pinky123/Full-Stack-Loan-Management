@@ -1,0 +1,185 @@
+<!--<div class="applications-container">
+  <h1>Loan Applications</h1>
+
+  <div class="application-cards">
+    <!-- Example Application Card 
+    <div class="application-card approved">
+      <h2>Application #101</h2>
+      <p><strong>Applicant:</strong> John Doe</p>
+      <p><strong>Loan Type:</strong> Personal Loan</p>
+      <p><strong>Amount:</strong> $15,000</p>
+      <span class="status">Approved</span>
+    </div>
+
+    <div class="application-card pending">
+      <h2>Application #102</h2>
+      <p><strong>Applicant:</strong> Jane Smith</p>
+      <p><strong>Loan Type:</strong> Business Loan</p>
+      <p><strong>Amount:</strong> $8,500</p>
+      <span class="status">Pending</span>
+    </div>
+
+    <div class="application-card rejected">
+      <h2>Application #103</h2>
+      <p><strong>Applicant:</strong> Mike Johnson</p>
+      <p><strong>Loan Type:</strong> Education Loan</p>
+      <p><strong>Amount:</strong> $12,000</p>
+      <span class="status">Rejected</span>
+    </div>
+  </div>
+</div>-->
+
+
+<div class="application-container">
+  <h1 class="main-heading">Micro Loan</h1>
+  <h2 class="sub-heading">Loan Application</h2>
+
+  <!-- Regular HTML form - no Angular submit function -->
+  <form class="loan-form">
+    <!-- 1. Personal Information -->
+    <section>
+      <h3>1. Personal Information</h3>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Others</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+      </div>
+    </section>
+
+    <!-- 2. Employment & Income -->
+    <section>
+      <h3>2. Employment & Income</h3>
+      <div class="form-group">
+        <label for="employmentStatus">Employment Status</label>
+        <select id="employmentStatus" required>
+          <option value="">Select</option>
+          <option>Salaried</option>
+          <option>Self-Employed</option>
+          <option>Unemployed</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="employerName">Employer / Business Name</label>
+        <input type="text" id="employerName">
+      </div>
+      <div class="form-group">
+        <label for="jobTitle">Job Title / Occupation</label>
+        <input type="text" id="jobTitle">
+      </div>
+      <div class="form-group">
+        <label for="income">Monthly Income</label>
+        <input type="number" id="income" required>
+      </div>
+      <div class="form-group">
+        <label for="startDate">Employment Start Date</label>
+        <input type="date" id="startDate">
+      </div>
+    </section>
+
+    <!-- 3. Loan Details -->
+    <section>
+      <h3>3. Loan Details</h3>
+      <div class="form-group">
+        <label for="loanProduct">Loan Product</label>
+        <select id="loanProduct" required>
+          <option value="">Select</option>
+          <option>Home</option>
+          <option>Education</option>
+          <option>Personal</option>
+          <option>Business</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="loanAmount">Loan Amount</label>
+        <input type="number" id="loanAmount" required>
+      </div>
+      <div class="form-group">
+        <label for="tenure">Tenure (Months)</label>
+        <input type="number" id="tenure" required>
+      </div>
+      <div class="form-group">
+        <label for="repaymentFrequency">Repayment Frequency</label>
+        <select id="repaymentFrequency" required>
+          <option value="">Select</option>
+          <option>Monthly</option>
+          <option>Bi-Monthly</option>
+          <option>Weekly</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- 4. Bank & Repayment Details -->
+    <section>
+      <h3>4. Bank & Repayment Details</h3>
+      <div class="form-group">
+        <label for="accountNumber">Bank Account Number</label>
+        <input type="text" id="accountNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="ifsc">IFSC / Bank Code</label>
+        <input type="text" id="ifsc" required>
+      </div>
+      <div class="form-group">
+        <label for="repaymentDate">Preferred Repayment Date</label>
+        <input type="date" id="repaymentDate">
+      </div>
+    </section>
+
+    <!-- 5. Documents -->
+    <section>
+      <h3>5. Documents</h3>
+      <div class="form-group">
+        <label for="idProof">ID Proof</label>
+        <input type="file" id="idProof" required>
+      </div>
+      <div class="form-group">
+        <label for="addressProof">Address Proof</label>
+        <input type="file" id="addressProof" required>
+      </div>
+      <div class="form-group">
+        <label for="incomeProof">Income Proof</label>
+        <input type="file" id="incomeProof" required>
+      </div>
+      <div class="form-group">
+        <label for="photo">Photo (Optional)</label>
+        <input type="file" id="photo">
+      </div>
+    </section>
+
+    <!-- 6. Declarations -->
+    <section>
+      <h3>6. Declarations & Consents</h3>
+      <div class="form-group checkbox-group">
+        <input type="checkbox" id="creditConsent" required>
+        <label for="creditConsent">I consent to pull credit score</label>
+      </div>
+      <div class="form-group checkbox-group">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">I agree to Terms & Conditions</label>
+      </div>
+    </section>
+
+    <!-- Normal HTML submit button -->
+    <button type="submit" class="submit-btn">Submit Application</button>
+  </form>
+</div>

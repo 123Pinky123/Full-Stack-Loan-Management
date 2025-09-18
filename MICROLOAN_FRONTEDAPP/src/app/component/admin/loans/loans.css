@@ -1,0 +1,272 @@
+/* Reset 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loan-container {
+  padding: 30px;
+  background: #f0f4f8;
+  min-height: 100vh;
+}
+
+.loan-container h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+/* Loan Cards Container 
+.loan-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+/* Individual Loan Card 
+.loan-card {
+  background: white;
+  width: 280px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+  position: relative;
+}
+
+.loan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Card Header 
+.loan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.loan-header h2 {
+  font-size: 1.3rem;
+}
+
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: white;
+  font-size: 0.85rem;
+  animation: pulse 2s infinite;
+}
+
+/* Status Colors 
+.approved .status {
+  background: #28a745;
+}
+
+.pending .status {
+  background: #ffc107;
+  color: #333;
+}
+
+.rejected .status {
+  background: #dc3545;
+}
+
+/* Card Info 
+.loan-card p {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Animations
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive 
+@media (max-width: 800px) {
+  .loan-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}*/
+
+
+/* ===== Reset & Base Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f4f8fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ===== Container & Title ===== */
+.loan-container {
+  width: 95%;
+  max-width: 1400px;
+  text-align: center;
+  animation: fadeIn 1s ease forwards;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* ===== Sub Heading ===== */
+.sub-heading {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+
+/* ===== Loan Cards Layout (Horizontal Scroll) ===== */
+.loan-cards {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 15px;
+}
+
+.loan-cards::-webkit-scrollbar {
+  height: 10px;
+}
+
+.loan-cards::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.loan-cards::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ===== Individual Loan Card ===== */
+.loan-card {
+  background: white;
+  min-width: 260px;
+  max-width: 280px;
+  flex: 0 0 auto;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+.loan-card:nth-child(2) { animation-delay: 0.1s; }
+.loan-card:nth-child(3) { animation-delay: 0.2s; }
+.loan-card:nth-child(4) { animation-delay: 0.3s; }
+
+.loan-card h2,
+.loan-card p,
+.rate {
+  color: white;
+}
+
+.loan-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.loan-card p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.rate {
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.apply-btn {
+  padding: 10px 20px;
+  border: none;
+  background: white;
+  color: #333;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.apply-btn:hover {
+  background: #333;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ===== Card Hover Animation ===== */
+.loan-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Gradient Backgrounds ===== */
+.home-loan {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+.personal-loan {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+.education-loan {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+.business-loan {
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  .loan-cards {
+    gap: 15px;
+  }
+  .apply-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

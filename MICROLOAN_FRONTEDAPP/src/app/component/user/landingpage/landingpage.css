@@ -1,0 +1,179 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #f9fafc;
+  color: #333;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fcfafa;
+}
+
+header .logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+header nav a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+header nav a:hover {
+  opacity: 0.8;
+}
+
+header .register {
+  background: #fff;
+  color: #00bcd4;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 80px;
+  background: linear-gradient(135deg, #6EE7B7, #3B82F6);
+  color: #fff;
+}
+
+.hero-content {
+  max-width: 50%;
+  animation: fadeInLeft 1.5s ease;
+}
+
+.hero-content h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+  background: #fff;
+  color: #3B82F6;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #f0f0f0;
+}
+
+.hero-image img {
+  width: 320px;
+  animation: bounce 2s infinite;
+}
+
+/* Loan Products */
+.loan-products {
+  padding: 60px 80px;
+  text-align: center;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+/* How it works */
+.how-it-works {
+  background: #f0f4ff;
+  padding: 60px 80px;
+  text-align: center;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.step {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 20%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(90deg, #3B82F6, #9333EA);
+  color: #fff;
+  padding: 40px 80px 20px;
+  margin-top: 50px;
+  animation: fadeInUp 1.5s ease;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
