@@ -1,100 +1,119 @@
-<!-- Repayment panel (Angular template) -->
-<div class="pay-card" role="region" aria-labelledby="repayTitle">
-  <aside class="summary" aria-hidden="false">
-    <div class="brand">
-      <div class="logo">e<span>comm</span>pay</div>
-      <div class="amount">₹ <strong>12,340</strong></div>
-      <div class="currency">Outstanding</div>
+<header>
+  <div class="logo">🏛 MicroLoan</div>
+  <nav>
+    <a routerLink="/user/home">Home</a>
+    <a routerLink="/user/loanproducts">Loan Products</a>
+    <a routerLink="/user/applications">Applications</a>
+    <a routerLink="/user/repayments">Repayments</a>
+    <a routerLink="/user/notifications">Notifications</a>
+    <a routerLink="/user/login" class="login">Login</a>
+    <a routerLink="/user/register" class="register">Register</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="repayment-summary-section">
+    <h2>Your Repayment Summary</h2>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <h3>Total Outstanding</h3>
+        <p>₹ {{ repaymentSummary.totalOutstanding | number:'1.2-2' }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Upcoming EMI</h3>
+        <p>₹ {{ repaymentSummary.upcomingEMI | number:'1.2-2' }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Total Paid</h3>
+        <p>₹ {{ repaymentSummary.totalPaid | number:'1.2-2' }}</p>
+      </div>
     </div>
+  </section>
 
-    <div class="summary-info">
-      <div class="info-row">
-        <span class="info-label">Next EMI</span>
-        <span class="info-value">₹ 2,500 — Aug 15</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Tenure left</span>
-        <span class="info-value">18 months</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Interest</span>
-        <span class="info-value">9.5% p.a.</span>
-      </div>
-    </div>
-
-    <div class="summary-footer">
-      <small class="muted">Need help? Contact support</small>
-    </div>
-  </aside>
-
-  <div class="form-wrap" role="region" aria-labelledby="repayTitle">
-    <header class="form-header">
-      <h1 id="repayTitle">Select Repayment Method</h1>
-      <p class="sub">Choose a method and complete your payment securely.</p>
-    </header>
-
-    <!-- static form: replace with Angular bindings if needed -->
-    <form class="repay-form" novalidate>
-      <div class="pay-methods" aria-hidden="false">
-        <label class="pill" title="Card">
-          <input type="radio" name="method" checked aria-hidden="true" />
-          <span class="pill-ico">💳</span>
-        </label>
-
-        <label class="pill" title="Visa">
-          <input type="radio" name="method" aria-hidden="true" />
-          <span class="pill-text">VISA</span>
-        </label>
-
-        <label class="pill" title="Apple Pay">
-          <input type="radio" name="method" aria-hidden="true" />
-          <span class="pill-ico"></span>
-        </label>
-
-        <label class="pill" title="PayPal">
-          <input type="radio" name="method" aria-hidden="true" />
-          <span class="pill-text">Pay</span>
-        </label>
-      </div>
-
-      <fieldset class="card-box" aria-label="Card details">
-        <legend class="sr-only">Card information</legend>
-
-        <div class="field">
-          <label for="cardNumber" class="field-label">Card number</label>
-          <input id="cardNumber" name="cardNumber" class="input" inputmode="numeric" placeholder="0000 0000 0000 0000" />
+  <section class="make-payment-section">
+    <h2>Make a New Payment</h2>
+    <form [formGroup]="repaymentForm" (ngSubmit)="makePayment()" class="payment-form">
+      <div class="form-group">
+        <label for="loanSelect">Select Loan:</label>
+        <select id="loanSelect" formControlName="loanId" class="form-control">
+          <option [ngValue]="null" disabled>Choose a loan</option>
+          <option *ngFor="let loan of loans" [ngValue]="loan.id">
+            {{ loan.name }} (Outstanding: ₹{{ loan.outstanding | number:'1.2-2' }})
+          </option>
+        </select>
+        <div *ngIf="repaymentForm.get('loanId')?.invalid && repaymentForm.get('loanId')?.touched" class="error-message">
+          Loan selection is required.
         </div>
-
-        <div class="field">
-          <label for="cardName" class="field-label">Cardholder</label>
-          <input id="cardName" name="cardName" class="input" placeholder="Full name" />
-        </div>
-
-        <div class="two-up">
-          <div class="field small">
-            <label for="exp" class="field-label">MM/YY</label>
-            <input id="exp" name="exp" class="input" placeholder="MM/YY" />
-          </div>
-
-          <div class="field small">
-            <label for="cvv" class="field-label">CVV</label>
-            <input id="cvv" name="cvv" class="input" placeholder="●●●" inputmode="numeric" />
-          </div>
-        </div>
-
-        <div class="field checkbox">
-          <label><input type="checkbox" /> Save card details for future use</label>
-        </div>
-      </fieldset>
-
-      <div class="actions">
-        <button type="submit" class="btn primary" aria-label="Pay now">Pay now</button>
-        <button type="button" class="btn ghost">Cancel</button>
       </div>
 
-      <div class="note">
-        <small class="muted">Payments are processed securely. We never store full card data on our servers.</small>
+      <div class="form-group">
+        <label for="amountInput">Payment Amount:</label>
+        <input type="number" id="amountInput" formControlName="amount" class="form-control" placeholder="Enter amount" />
+        <div *ngIf="repaymentForm.get('amount')?.invalid && repaymentForm.get('amount')?.touched" class="error-message">
+          <span *ngIf="repaymentForm.get('amount')?.errors?.['required']">Amount is required.</span>
+          <span *ngIf="repaymentForm.get('amount')?.errors?.['min']">Amount must be at least 1.</span>
+        </div>
       </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="repaymentForm.invalid">Submit Payment</button>
     </form>
+  </section>
+
+  <section class="repayment-history-section">
+    <h2>Repayment History</h2>
+    <table class="repayment-table">
+      <thead>
+        <tr>
+          <th>Loan ID</th>
+          <th>Due Date</th>
+          <th>Amount Due</th>
+          <th>Status</th>
+          <th>Payment Date</th>
+          <th>Amount Paid</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let repayment of repayments">
+          <td>{{ getLoanName(repayment.loanId) }}</td>
+          <td>{{ repayment.dueDate | date:'mediumDate' }}</td>
+          <td>₹ {{ repayment.amountDue | number:'1.2-2' }}</td>
+          <td>
+            <span [ngClass]="{
+              'status-paid': repayment.status === 'Paid',
+              'status-pending': repayment.status === 'Pending',
+              'status-overdue': repayment.status === 'Overdue'
+            }">{{ repayment.status }}</span>
+          </td>
+          <td>{{ repayment.paymentDate ? (repayment.paymentDate | date:'mediumDate') : 'N/A' }}</td>
+          <td>₹ {{ repayment.amountPaid ? (repayment.amountPaid | number:'1.2-2') : 'N/A' }}</td>
+          <td>
+            <button *ngIf="repayment.status !== 'Paid'" class="btn btn-sm btn-secondary" (click)="selectLoanForPayment(repayment)">Pay Now</button>
+            <button *ngIf="repayment.status === 'Paid'" class="btn btn-sm btn-tertiary" (click)="viewLoanDetails(repayment.loanId)">View Details</button>
+          </td>
+        </tr>
+        <tr *ngIf="repayments.length === 0">
+          <td colspan="7" class="no-data">No repayment records found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>© <strong>MicroLoan</strong> — All rights reserved</div>
+    <div class="footer-links">
+      <a (click)="showFooterContent('terms')">Terms</a> · <a (click)="showFooterContent('privacy')">Privacy</a> · <a (click)="showFooterContent('contact')">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Footer Content Display -->
+<div class="footer-content-display" *ngIf="selectedFooterContent">
+  <div class="container">
+    <button class="back-button" (click)="hideFooterContent()">&leftarrow; Back</button>
+    <h2>{{ selectedFooterContent.title }}</h2>
+    <p>{{ selectedFooterContent.text }}</p>
   </div>
 </div>

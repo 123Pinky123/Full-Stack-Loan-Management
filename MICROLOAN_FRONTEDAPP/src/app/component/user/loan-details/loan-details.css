@@ -1,0 +1,204 @@
+.loan-details-section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.loan-details-section h2 {
+  color: #4f0f86;
+  font-size: 28px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.loan-summary-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.summary-card h3 {
+  color: #6b21a8;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.summary-card p {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+}
+
+.amortization-schedule-section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.amortization-schedule-section h2 {
+  color: #4f0f86;
+  font-size: 28px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.export-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-secondary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #0056b3;
+}
+
+.repayment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.repayment-table th,
+.repayment-table td {
+  border: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.repayment-table th {
+  background-color: #f8f8f8;
+  font-weight: 600;
+  color: #555;
+}
+
+.repayment-table tbody tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+.repayment-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.status-paid {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.status-pending {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.status-overdue {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.overdue-row {
+  background-color: #fcebeb; /* Light red background for overdue rows */
+}
+
+.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+.back-button {
+  background-color: #6c757d;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+/* Header Styles */
+header {
+  background-color: #6b21a8; /* Purple background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 15px 30px; /* Vertical and horizontal padding */
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space out logo and nav */
+  align-items: center; /* Vertically align items */
+}
+
+.logo {
+  font-size: 24px; /* Large font size for the logo */
+  font-weight: bold; /* Bold text */
+  color: white; /* White color */
+}
+
+/* Navigation Styles */
+nav a {
+  text-decoration: none; /* Remove underline from links */
+  color: white; /* White color for links */
+  font-weight: 500; /* Medium font weight */
+  margin-left: 25px; /* Space between navigation items */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+nav a:hover {
+  color: #f0f0f0; /* Lighter white on hover */
+}
+
+/* Specific styles for Login/Register buttons */
+nav a.login {
+  background-color: #4f0f86; /* Darker purple background for login */
+  color: white; /* White text */
+  padding: 8px 15px; /* Padding for button appearance */
+  border-radius: 5px; /* Rounded corners */
+  margin-left: 25px; /* Space from other nav items */
+}
+
+nav a.login:hover {
+  background-color: #3b0b6b; /* Even darker purple on hover */
+}
+
+nav a.register {
+  background-color: #4f0f86; /* Darker purple background for register */
+  color: white; /* White text */
+  padding: 8px 15px; /* Padding for button appearance */
+  border-radius: 5px; /* Rounded corners */
+  margin-left: 10px; /* Space from login button */
+}
+
+nav a.register:hover {
+  background-color: #3b0b6b; /* Even darker purple on hover */
+}

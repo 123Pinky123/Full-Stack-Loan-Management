@@ -1,98 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MicroLoan - Apply for a Loan</title>
-  <link rel="stylesheet" href="landingpage.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="logo">🏛 MicroLoan</div> 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Loan Products</a>
-      <a href="#">Applications</a>
-      <a href="#">Repayments</a>
-      <a href="#">Notifications</a>
-      <a href="#" class="login">Login</a>
-      <a href="#" class="register">Register</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">🏛 MicroLoan</div>
+  <nav>
+    <a routerLink="/landingpage" routerLinkActive="active">Home</a>
+    <a routerLink="/user/loanproducts" routerLinkActive="active" *ngIf="isLoggedIn">Loan Products</a>
+    <a routerLink="/user/applications" routerLinkActive="active" *ngIf="isLoggedIn">Applications</a>
+    <a routerLink="/user/repayments" routerLinkActive="active" *ngIf="isLoggedIn">Repayments</a>
+    <a routerLink="/user/notifications" routerLinkActive="active" *ngIf="isLoggedIn">Notifications</a>
 
-  
+    <a routerLink="/user/login" class="login" routerLinkActive="active" *ngIf="!isLoggedIn">Login</a>
+    <a routerLink="/user/register" class="register" routerLinkActive="active" *ngIf="!isLoggedIn">Register</a>
+    <a (click)="logout()" class="logout" *ngIf="isLoggedIn">Logout</a>
+  </nav>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Apply for a Loan in Minutes</h1>
-      <p>Quick approvals and easy repayments tailored for you.</p>
-      <a href="#" class="btn-primary">Apply Now</a>
-    </div>
-    <div class="hero-image">
-      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png" alt="Loan Illustration">
-    </div>
-  </section>
+<section id="home-hero" class="hero-section">
+  <div class="hero-content">
+    <h1>Welcome to MicroLoan</h1>
+    <p *ngIf="!isLoggedIn">Your trusted partner for financial solutions.</p>
+    <p *ngIf="isLoggedIn">Welcome back! Access your loan management dashboard.</p>
 
-  <!-- Loan Products -->
-  <section class="loan-products">
-    <h2>Loan Products</h2>
-    <div class="product-grid">
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Personal Loan">
-        <h3>Personal Loan</h3>
-        <p>Flexible loan options for personal needs</p>
-      </div>
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135687.png" alt="Education Loan">
-        <h3>Education Loan</h3>
-        <p>Loans to finance educational expenses</p>
-      </div>
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135785.png" alt="Business Loan">
-        <h3>Business Loan</h3>
-        <p>Financial support for business growth</p>
-      </div>
-      <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Home Loan">
-        <h3>Home Loan</h3>
-        <p>Loans for buying or renovating a home</p>
-      </div>
-    </div>
-  </section>
+    <a 
+      *ngIf="!isLoggedIn"
+      (click)="scrollToSection('loan-products')" 
+      class="btn-primary"
+    >
+      Explore Products
+    </a>
 
-  <!-- How It Works -->
-  <section class="how-it-works">
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step">1️⃣ Apply<br><small>Submit loan application</small></div>
-      <div class="step">2️⃣ Verify<br><small>Provide documents</small></div>
-      <div class="step">3️⃣ Approve<br><small>Loan decision</small></div>
-      <div class="step">4️⃣ Repay<br><small>Easy installments</small></div>
-    </div>
-  </section>
+    <a 
+      *ngIf="isLoggedIn"
+      routerLink="/user/loanproducts"
+      class="btn-primary"
+    >
+      View My Loans
+    </a>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div>
-        <h3>MicroLoan</h3>
-        <p>Making finance simple and accessible for everyone.</p>
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <p>Email: support@microloan.com</p>
-        <p>Phone: +91 98765 43210</p>
-        <p>Address: 123 Finance St, Mumbai, India</p>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <p>🌐 Facebook | 🐦 Twitter | 📸 Instagram</p>
-      </div>
+<section id="loan-products" class="content-section">
+  <h2>Our Loan Products</h2>
+  <p>Explore various loan offerings — tailored for your needs.</p>
+</section>
+
+<section id="applications" class="content-section">
+  <h2>Your Applications</h2>
+  <p>Track your loan applications and apply for new ones.</p>
+</section>
+
+<section id="repayments" class="content-section">
+  <h2>Manage Repayments</h2>
+  <p>Check your repayment schedule and pay EMIs easily.</p>
+</section>
+
+<section id="notifications" class="content-section">
+  <h2>Notifications</h2>
+  <p>Stay updated with loan-related alerts and updates.</p>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <h3>MicroLoan</h3>
+      <p>Making finance simple and accessible for everyone.</p>
     </div>
-    <div class="footer-bottom">© 2025 MicroLoan. All Rights Reserved.</div>
-  </footer>
-</body>
-</html>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:support&#64;microloan.com">support&#64;microloan.com</a></p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Address: 123 Finance St, Mumbai, India</p>
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <p>🌐 Facebook | 🐦 Twitter | 📸 Instagram</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 MicroLoan. All Rights Reserved.</div>
+</footer>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Authentication</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .debug-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        button { margin: 5px; padding: 10px; }
+        .status { font-weight: bold; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Authentication Debug Tool</h1>
+    
+    <div class="debug-section">
+        <h3>Current Status</h3>
+        <div id="current-status">Loading...</div>
+    </div>
+    
+    <div class="debug-section">
+        <h3>Test Actions</h3>
+        <button onclick="setAdminAuth()">Set Admin Authentication</button>
+        <button onclick="setUserAuth()">Set User Authentication</button>
+        <button onclick="clearAuth()">Clear Authentication</button>
+        <button onclick="checkAuth()">Refresh Status</button>
+    </div>
+    
+    <div class="debug-section">
+        <h3>Test Navigation</h3>
+        <button onclick="testAdminDashboard()">Test Admin Dashboard</button>
+        <button onclick="testUserProducts()">Test User Products</button>
+    </div>
+    
+    <div class="debug-section">
+        <h3>Manual Commands</h3>
+        <p>Copy and paste these commands in browser console:</p>
+        <textarea id="commands" rows="10" cols="80" readonly>
+// Set Admin Authentication
+localStorage.setItem('isLoggedIn', 'true');
+localStorage.setItem('userRole', 'admin');
+localStorage.setItem('userData', JSON.stringify({email: 'admin@admin.com'}));
+
+// Set User Authentication  
+localStorage.setItem('isLoggedIn', 'true');
+localStorage.setItem('userRole', 'user');
+localStorage.setItem('userData', JSON.stringify({email: 'user@user.com'}));
+
+// Clear Authentication
+localStorage.removeItem('isLoggedIn');
+localStorage.removeItem('userRole');
+localStorage.removeItem('userData');
+
+// Check Current Status
+console.log('isLoggedIn:', localStorage.getItem('isLoggedIn'));
+console.log('userRole:', localStorage.getItem('userRole'));
+console.log('userData:', localStorage.getItem('userData'));
+        </textarea>
+    </div>
+    
+    <script>
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userRole = localStorage.getItem('userRole');
+            const userData = localStorage.getItem('userData');
+            
+            let status = `
+                <p class="status">Login Status: <span class="${isLoggedIn ? 'success' : 'error'}">${isLoggedIn ? 'LOGGED IN' : 'NOT LOGGED IN'}</span></p>
+                <p class="status">User Role: <span class="${userRole ? 'success' : 'error'}">${userRole || 'NONE'}</span></p>
+                <p class="status">User Data: <span class="${userData ? 'success' : 'error'}">${userData || 'NONE'}</span></p>
+            `;
+            
+            document.getElementById('current-status').innerHTML = status;
+        }
+        
+        function setAdminAuth() {
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userRole', 'admin');
+            localStorage.setItem('userData', JSON.stringify({email: 'admin@admin.com'}));
+            alert('Admin authentication set!');
+            checkAuth();
+        }
+        
+        function setUserAuth() {
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userRole', 'user');
+            localStorage.setItem('userData', JSON.stringify({email: 'user@user.com'}));
+            alert('User authentication set!');
+            checkAuth();
+        }
+        
+        function clearAuth() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userRole');
+            localStorage.removeItem('userData');
+            alert('Authentication cleared!');
+            checkAuth();
+        }
+        
+        function testAdminDashboard() {
+            window.open('/admin/dashboard', '_blank');
+        }
+        
+        function testUserProducts() {
+            window.open('/user/loanproducts', '_blank');
+        }
+        
+        // Check auth on page load
+        window.onload = checkAuth;
+    </script>
+</body>
+</html>

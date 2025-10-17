@@ -8,19 +8,28 @@
 </head>
 <body>
   <div class="login-box">
+    <div class="brand">
+      <span class="logo">💰</span>
+      <span class="brand-name">MicroLoan</span>
+    </div>
     <h2>Login</h2>
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="input-group">
-        <span class="icon">👤</span>
-        <input type="text" placeholder="Enter Name" required>
-      </div>
-      <div class="input-group">
-         <span class="icon">📞</span>
-        <input type="text" placeholder="Enter Phone Number" required>
+        <span class="icon">📧</span>
+        <input type="email" formControlName="email" placeholder="Enter Email" required>
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+          <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</span>
+          <span *ngIf="loginForm.get('email')?.errors?.['email']">Enter a valid email address.</span>
+        </div>
       </div>
       <div class="input-group">
          <span class="icon">🔒</span>
-        <input type="password" placeholder="Enter Password" required>
+        <input type="password" formControlName="password" placeholder="Enter Password" required #passwordInput>
+        <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">👁️</span>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+          <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>
+          <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</span>
+        </div>
       </div>
       
       <div class="options">
@@ -28,10 +37,14 @@
         <a href="#">Forgot password?</a>
       </div>
       
-      <button type="submit">Login</button>
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
       
+      <div *ngIf="message" class="error-message" style="margin-top: 10px;">
+        {{ message }}
+      </div>
+
       <div class="register">
-        Don’t have an account? <a href="#">Register</a>
+        Don’t have an account? <a routerLink="/user/register">Register</a>
       </div>
     </form>
   </div>

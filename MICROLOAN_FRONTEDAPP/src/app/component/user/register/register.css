@@ -1,158 +1,3 @@
-/* Reset 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-}
-
-/* Container 
-.register-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-/* Card 
-.register-card {
-  background: #fff;
-  border-radius: 25px;
-  padding: 40px 30px;
-  width: 350px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  animation: fadeIn 1s ease-in-out;
-}
-
-.register-card .logo {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  animation: bounce 2s infinite;
-}
-
-.register-card h1 {
-  margin-bottom: 10px;
-  color: #333;
-  animation: fadeDown 1s ease-out;
-}
-
-.register-card p {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 30px;
-  animation: fadeUp 1s ease-out;
-}
-
-/* Input Groups 
-.input-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  background: #f1f1f1;
-  border-radius: 15px;
-  padding: 10px 15px;
-  transition: 0.3s;
-}
-
-.input-group span {
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-.input-group input {
-  border: none;
-  outline: none;
-  background: transparent;
-  flex: 1;
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Hover effect 
-.input-group:hover {
-  background: #e0d4f7;
-}
-
-/* Button 
-button {
-  width: 100%;
-  padding: 12px 0;
-  border: none;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #28a745, #20c997);
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-}
-
-/* Login Link 
-.login-link {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.login-link a {
-  color: #6a11cb;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.login-link a:hover {
-  color: #2575fc;
-}
-
-/* Animations 
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(-20px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-
-@keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(20px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-
-@keyframes fadeDown {
-  0% { opacity: 0; transform: translateY(-20px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-8px); }
-  60% { transform: translateY(-4px); }
-}
-
-/* Responsive 
-@media (max-width: 400px) {
-  .register-card {
-    width: 90%;
-    padding: 30px 20px;
-  }
-}*/
-
-
-
-
-/* Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html,body { height: 100%; }
 
@@ -160,42 +5,25 @@ html,body { height: 100%; }
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex; /* Changed from grid to flex */
+  justify-content: center; /* Added to match login.css */
+  align-items: center; /* Added to match login.css */
   /* Replace URL below with your image path if local */
-  background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
-  color: #fff;
+  background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1470&q=80')
+  no-repeat center center/cover;
+  color: white; /* Changed to white for visibility */
 }
 
-/* subtle overlay to darken the photo slightly */
-body::after{
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(10,10,10,0.35);
-  pointer-events: none;
-}
-
-/* wrapper to center content and allow card shadowing */
-.wrap {
-  width: 100%;
-  max-width: 920px;
-  padding: 40px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Glass card (matches login glass style) */
-.register-card {
-  width: 480px;
-  max-width: 92%;
-  background: rgba(255,255,255,0.08);
+/* Glassmorphism Login Box */
+.login-box { /* Changed from .register-card to .login-box */
+  width: 360px; /* Changed from 480px to 360px to match login-box */
+  /* max-width: 92%; Removed as not present in login.css */
+  background: rgba(255,255,255,0.1);
   border-radius: 20px;
-  padding: 34px 28px;
+  padding: 40px; /* Changed from 34px 28px to 40px to match login-box */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
   text-align: center;
   color: #fff;
 }
@@ -204,39 +32,36 @@ body::after{
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 25px; /* Aligned with login.css */
 }
-.logo { font-size: 1.6rem; }
-.brand-name { font-weight: 700; letter-spacing: 0.2px; }
+.logo { font-size: 2.5rem; /* Increased from 1.6rem to 2.5rem */ margin-right: 10px; /* Added to align with login.css */}
+.brand-name { font-weight: bold; letter-spacing: 0.2px; font-size: 1.8rem; /* Added font-size for brand-name */ }
 
 /* Title */
-.register-card h1 {
+.login-box h2 { /* Changed from .register-card h1 to .login-box h2 */
   font-size: 28px;
-  margin: 6px 0 8px;
+  margin-bottom: 25px; /* Aligned with login.css */
   font-weight: 700;
+  color: white; /* Changed from #080808 to white for better visibility */
 }
 .subtitle {
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 18px;
+  color: white; /* Changed from rgba(9, 9, 9, 0.973) to white for better visibility */
+  /* margin-bottom: 18px; Removed to align spacing with login.css */
 }
 
 /* Form & inputs */
-.form { display: grid; gap: 12px; }
-
 .input-group{
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  background: rgba(255,255,255,0.2);
+  margin: 12px 0;
   border-radius: 30px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: background 0.18s, transform 0.12s;
+  padding: 10px 15px; /* Aligned padding with login.css */
+  border: none; /* Aligned border with login.css */
 }
 .input-group:focus-within {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.88);
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
@@ -254,11 +79,30 @@ body::after{
   outline: none;
   color: #fff;
   font-size: 15px;
-  width: 100%;
+  width: 500%;
 }
 
 .input-group input::placeholder{
-  color: rgba(255,255,255,0.7);
+  /* Default on dark translucent background: light placeholder for contrast */
+  color: rgba(255,255,255,0.75);
+}
+
+/* Improve contrast when the input group is focused (background becomes light) */
+.input-group:focus-within input{
+  color: #080808;
+}
+.input-group:focus-within input::placeholder{
+  color: #555;
+}
+
+/* Ensure password visibility toggle remains visible in both states */
+.password-toggle{
+  margin-left: 8px;
+  cursor: pointer;
+  color: #fff;
+}
+.input-group:focus-within .password-toggle{
+  color: #080808;
 }
 
 /* Button */
@@ -268,15 +112,15 @@ body::after{
   padding: 14px;
   border-radius: 30px;
   border: none;
-  background: white;
-  color: #5a228f;            /* purple-ish text like your login button */
+  background: white; /* Changed from #ffffff40 to white */
+  color: purple;            /* purple-ish text like your login button */
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(90,34,143,0.12);
   transition: transform .14s ease, box-shadow .14s ease;
 }
-.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(90,34,143,0.16); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(240, 238, 241, 0.16); }
 
 /* login link */
 .login-link {
@@ -293,8 +137,7 @@ body::after{
 
 /* Responsive */
 @media (max-width: 420px) {
-  .register-card { padding: 26px 18px; }
-  .register-card h1 { font-size: 22px; }
+  .login-box { padding: 26px 18px; } /* Changed from .register-card to .login-box and adjusted padding */
   .input-group { padding: 10px 12px; border-radius: 26px; }
   .btn { padding: 12px; }
 }

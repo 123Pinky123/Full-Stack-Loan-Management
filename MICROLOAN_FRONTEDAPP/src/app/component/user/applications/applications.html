@@ -1,38 +1,20 @@
-<!--<div class="applications-container">
-  <h1>Loan Applications</h1>
-
-  <div class="application-cards">
-    <!-- Example Application Card 
-    <div class="application-card approved">
-      <h2>Application #101</h2>
-      <p><strong>Applicant:</strong> John Doe</p>
-      <p><strong>Loan Type:</strong> Personal Loan</p>
-      <p><strong>Amount:</strong> $15,000</p>
-      <span class="status">Approved</span>
-    </div>
-
-    <div class="application-card pending">
-      <h2>Application #102</h2>
-      <p><strong>Applicant:</strong> Jane Smith</p>
-      <p><strong>Loan Type:</strong> Business Loan</p>
-      <p><strong>Amount:</strong> $8,500</p>
-      <span class="status">Pending</span>
-    </div>
-
-    <div class="application-card rejected">
-      <h2>Application #103</h2>
-      <p><strong>Applicant:</strong> Mike Johnson</p>
-      <p><strong>Loan Type:</strong> Education Loan</p>
-      <p><strong>Amount:</strong> $12,000</p>
-      <span class="status">Rejected</span>
-    </div>
-  </div>
-</div>-->
-
+<header>
+  <div class="logo">🏛 MicroLoan</div>
+  <nav>
+    <a (click)="scrollToSection('home-hero')">Home</a>
+    <a (click)="scrollToSection('loan-products')">Loan Products</a>
+    <a (click)="scrollToSection('applications')">Applications</a>
+    <a (click)="scrollToSection('repayments')">Repayments</a>
+    <a (click)="scrollToSection('notifications')">Notifications</a>
+    <a routerLink="/user/login" class="login">Login</a>
+    <a routerLink="/user/register" class="register">Register</a>
+  </nav>
+</header>
 
 <div class="application-container">
   <h1 class="main-heading">Micro Loan</h1>
   <h2 class="sub-heading">Loan Application</h2>
+  <p *ngIf="selectedType" class="selected-type">Selected Product: <strong>{{ selectedType | titlecase }}</strong></p>
 
   <!-- Regular HTML form - no Angular submit function -->
   <form class="loan-form">
@@ -48,6 +30,14 @@
         <input type="text" id="lastName" required>
       </div>
       <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" required>
+      </div>
+      <div class="form-group">
+        <label for="fatherSpouseName">Father/Spouse Name</label>
+        <input type="text" id="fatherSpouseName">
+      </div>
+      <div class="form-group">
         <label for="gender">Gender</label>
         <select id="gender" required>
           <option value="">Select</option>
@@ -57,12 +47,42 @@
         </select>
       </div>
       <div class="form-group">
+        <label for="maritalStatus">Marital Status</label>
+        <select id="maritalStatus" required>
+          <option value="">Select</option>
+          <option>Single</option>
+          <option>Married</option>
+          <option>Divorced</option>
+          <option>Widowed</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label for="phone">Phone Number</label>
         <input type="tel" id="phone" required>
       </div>
       <div class="form-group">
         <label for="email">Email Address</label>
         <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="residentialAddress">Residential Address</label>
+        <textarea id="residentialAddress" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="pan">PAN Number</label>
+        <input type="text" id="pan">
+      </div>
+      <div class="form-group">
+        <label for="aadhaar">Aadhaar Number</label>
+        <input type="text" id="aadhaar">
+      </div>
+      <div class="form-group">
+        <label for="passport">Passport Number (Optional)</label>
+        <input type="text" id="passport">
+      </div>
+      <div class="form-group">
+        <label for="voterId">Voter ID (Optional)</label>
+        <input type="text" id="voterId">
       </div>
     </section>
 

@@ -13,22 +13,45 @@ html,body { height:100%; font-family: Inter, "Segoe UI", system-ui, Arial, sans-
 .container{ width:92%; max-width:1200px; margin:0 auto; }
 
 /* Header */
-.site-header{
-  background: linear-gradient(90deg,var(--purple-1), var(--purple-2));
-  color: #fff;
-  padding: 12px 0;
-  box-shadow: 0 8px 20px rgba(55,12,88,0.12);
+header {
+  background: linear-gradient(90deg, #e486f0, #7b2cc0); /* Purple gradient from landingpage */
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fcfafa;
   position: sticky;
   top: 0;
-  z-index: 40;
+  z-index: 1000;
 }
-.header-inner{ display:flex; align-items:center; gap:20px; justify-content:space-between; }
-.brand{ font-weight:700; font-size:1.2rem; }
-.main-nav{ display:flex; gap:18px; align-items:center; }
-.main-nav a{ color: rgba(255,255,255,0.95); text-decoration:none; font-weight:600; padding:6px 8px; border-radius:6px; }
-.auth{ display:flex; gap:12px; align-items:center; }
-.auth .link{ color: #ffd54f; text-decoration:none; font-weight:700; }
-.auth .btn-ghost{ background: #fff; color: var(--purple-2); padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:700; }
+
+header .logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+header nav a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+header nav a:hover {
+  opacity: 0.8;
+}
+
+header .login,
+header .register {
+  background: #5956fa; /* Blueish purple for buttons */
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
 
 /* HERO */
 .hero{ padding:48px 0; background: linear-gradient(180deg, rgba(58,15,122,0.95), rgba(123,44,192,0.95)); color:#fff; }
@@ -145,9 +168,111 @@ html,body { height:100%; font-family: Inter, "Segoe UI", system-ui, Arial, sans-
 /* Footer */
 .site-footer{ padding:26px 0; background:#fff; border-top:1px solid rgba(16,24,40,0.03); }
 .footer-inner{ display:flex; justify-content:space-between; align-items:center; color:#666; font-size:0.95rem; }
+.footer-links a {
+  color: var(--purple-2); /* A lighter purple for better visibility */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  color: var(--purple-1); /* A darker purple on hover */
+}
+
+/* Product Details */
+.product-details {
+  background: #fff;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 16px 40px rgba(36,36,36,0.06);
+  border: 1px solid rgba(16,24,40,0.03);
+}
+
+.product-details .section-title {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.product-details p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+/* Footer Content Display */
+.footer-content-display {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.footer-content-display .container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 600px;
+  text-align: left;
+  position: relative;
+}
+
+.footer-content-display h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #3a0f7a;
+}
+
+.footer-content-display p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
+
+.footer-content-display .back-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.2rem;
+  color: #7b2cc0;
+}
 
 /* Responsive */
-@media (max-width: 1024px){
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px; /* Adjust padding for smaller screens */
+  }
+
+  header nav {
+    display: none; /* Hide nav on smaller screens */
+  }
+
   .cards-grid{ grid-template-columns: repeat(2,1fr); }
   .hero-inner{ flex-direction:column; gap:20px; align-items:stretch; }
   .emi-box{ width:100%; max-width:420px; }

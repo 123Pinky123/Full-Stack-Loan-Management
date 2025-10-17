@@ -1,4 +1,4 @@
-/* Reset 
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,267 +6,343 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.loan-container {
-  padding: 30px;
+body {
   background: #f0f4f8;
-  min-height: 100vh;
 }
 
-.loan-container h1 {
+/* Container */
+.loans-container {
+  padding: 30px;
+  min-height: 100vh;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.loans-container h1 {
   text-align: center;
   margin-bottom: 40px;
-  font-size: 2.5rem;
-  color: #333;
+  font-size: 2.8rem;
+  color: #2c3e50;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* Loan Cards Container 
-.loan-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
-}
-
-/* Individual Loan Card 
-.loan-card {
-  background: white;
-  width: 280px;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  transition: transform 0.4s, box-shadow 0.4s;
-  cursor: pointer;
-  position: relative;
-}
-
-.loan-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-/* Card Header 
-.loan-header {
+/* Controls */
+.controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.loan-header h2 {
-  font-size: 1.3rem;
+.create-loan-btn {
+  background-image: linear-gradient(45deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 }
 
+.create-loan-btn:hover {
+  background-image: linear-gradient(45deg, #66BB6A 0%, #4CAF50 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.search-bar {
+  display: flex;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.search-bar input {
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  outline: none;
+  width: 250px;
+}
+
+.search-bar button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+/* Loans Table */
+.loans-table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+}
+
+.loans-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 800px;
+}
+
+.loans-table th,
+.loans-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.loans-table th {
+  background-image: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.loans-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.loans-table tbody tr:hover {
+  background-color: #e9ecef;
+  transition: background-color 0.3s ease;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #6b7280;
+}
+
+/* Status Badges */
 .status {
-  padding: 5px 12px;
+  display: inline-block;
+  padding: 6px 12px;
   border-radius: 20px;
   font-weight: bold;
   color: white;
-  font-size: 0.85rem;
-  animation: pulse 2s infinite;
-}
-
-/* Status Colors 
-.approved .status {
-  background: #28a745;
-}
-
-.pending .status {
-  background: #ffc107;
-  color: #333;
-}
-
-.rejected .status {
-  background: #dc3545;
-}
-
-/* Card Info 
-.loan-card p {
-  margin-bottom: 8px;
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* Animations
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-/* Responsive 
-@media (max-width: 800px) {
-  .loan-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-}*/
-
-
-/* ===== Reset & Base Styles ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background: #f4f8fc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-/* ===== Container & Title ===== */
-.loan-container {
-  width: 95%;
-  max-width: 1400px;
+  font-size: 0.8rem;
   text-align: center;
-  animation: fadeIn 1s ease forwards;
+  min-width: 90px;
+  text-transform: capitalize;
 }
 
-.page-title {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #333;
-}
+/* Status Colors */
+.pending { background-color: #ffc107; color: #333; }    /* 🟡 Yellow */
+.approved { background-color: #28a745; }                /* 🟢 Green */
+.rejected { background-color: #dc3545; }                /* 🔴 Red */
+.active { background-color: #0d6efd; }                  /* 🔵 Blue */
+.completed { background-color: #6c757d; }               /* ⚫ Gray */
+.defaulted { background-color: #e63946; }               /* 🔴 Deep Red */
+.suspended { background-color: #ff9800; color: #fff; }  /* 🟠 Orange */
 
-/* ===== Sub Heading ===== */
-.sub-heading {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 30px;
-  animation: fadeIn 1.2s ease forwards;
-}
-
-
-/* ===== Loan Cards Layout (Horizontal Scroll) ===== */
-.loan-cards {
-  display: flex;
-  gap: 25px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 15px;
-}
-
-.loan-cards::-webkit-scrollbar {
-  height: 10px;
-}
-
-.loan-cards::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
+/* Action Buttons */
+.action-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
   border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background-color 0.3s ease;
 }
 
-.loan-cards::-webkit-scrollbar-track {
-  background: transparent;
-}
+.edit-btn { background-color: #007bff; }
+.edit-btn:hover { background-color: #0056b3; }
 
-/* ===== Individual Loan Card ===== */
-.loan-card {
+.delete-btn { background-color: #dc3545; }
+.delete-btn:hover { background-color: #c82333; }
+
+/* Create Loan Form */
+.create-loan-form {
   background: white;
-  min-width: 260px;
-  max-width: 280px;
-  flex: 0 0 auto;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.form-header h3 {
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.loan-form {
   display: flex;
   flex-direction: column;
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp 0.8s ease forwards;
+  gap: 20px;
 }
 
-.loan-card:nth-child(2) { animation-delay: 0.1s; }
-.loan-card:nth-child(3) { animation-delay: 0.2s; }
-.loan-card:nth-child(4) { animation-delay: 0.3s; }
-
-.loan-card h2,
-.loan-card p,
-.rate {
-  color: white;
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-.loan-card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.loan-card p {
-  font-size: 0.95rem;
-  margin-bottom: 10px;
+.form-group label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
 }
 
-.rate {
-  font-weight: bold;
-  margin-bottom: 15px;
-  display: block;
-}
-
-.apply-btn {
-  padding: 10px 20px;
-  border: none;
+.form-input,
+.form-select {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
   background: white;
-  color: #333;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
 }
 
-.apply-btn:hover {
-  background: #333;
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input.error,
+.form-select.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
   color: white;
-  transform: scale(1.05);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
 }
 
-/* ===== Card Hover Animation ===== */
-.loan-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+.save-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
-/* ===== Gradient Backgrounds ===== */
-.home-loan {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-}
-.personal-loan {
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-}
-.education-loan {
-  background: linear-gradient(135deg, #43e97b, #38f9d7);
-}
-.business-loan {
-  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+.save-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-/* ===== Animations ===== */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.cancel-btn {
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-@keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.cancel-btn:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
 }
 
-/* ===== Responsive ===== */
+.message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .page-title {
-    font-size: 2rem;
-  }
-  .loan-cards {
-    gap: 15px;
-  }
-  .apply-btn {
-    width: 100%;
-    text-align: center;
-  }
+  .controls { flex-direction: column; align-items: stretch; }
+  .search-bar { width: 100%; }
+  .search-bar input { width: 100%; }
+  .loans-table-container { padding: 10px; }
+  .loans-table th, .loans-table td { padding: 10px 8px; }
+  .loans-container h1 { font-size: 2rem; }
+  .form-row { grid-template-columns: 1fr; gap: 16px; }
+  .form-actions { flex-direction: column; }
+  .save-btn, .cancel-btn { width: 100%; }
 }

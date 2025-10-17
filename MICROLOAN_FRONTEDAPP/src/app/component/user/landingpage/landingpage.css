@@ -13,12 +13,15 @@ body {
 
 /* Header */
 header {
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  background: linear-gradient(90deg, #e486f0, #7b2cc0); /* Purple gradient */
   padding: 15px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #fcfafa;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 header .logo {
@@ -32,122 +35,95 @@ header nav a {
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.3s;
+  cursor: pointer; /* Indicate clickable */
 }
 
 header nav a:hover {
   opacity: 0.8;
 }
 
+header .login,
 header .register {
-  background: #fff;
-  color: #00bcd4;
+  background: #5956fa; /* Blueish purple for buttons */
+  color: #fff;
   padding: 6px 14px;
   border-radius: 6px;
   font-weight: 600;
+  text-decoration: none; /* Ensure no underline */
 }
 
-/* Hero */
-.hero {
+/* Hero Section */
+.hero-section {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 60px 80px;
-  background: linear-gradient(135deg, #6EE7B7, #3B82F6);
+  justify-content: center; /* Center content horizontally */
+  padding: 100px 80px; /* More padding for a larger hero */
+  background: linear-gradient(180deg, rgba(186, 144, 249, 0.8), rgba(202, 151, 246, 0.8)), url('https://media.gettyimages.com/id/1927881398/photo/group-of-business-persons-talking-in-the-office.jpg?s=612x612&w=0&k=20&c=N0erlm9rQIa_kdBpwxSOa8E1my9bwY_oeN84wZIhais=') no-repeat center center / cover;
   color: #fff;
+  text-align: center; /* Center text within hero content */
 }
 
 .hero-content {
-  max-width: 50%;
-  animation: fadeInLeft 1.5s ease;
+  max-width: 800px; /* Constrain width of hero content */
 }
 
 .hero-content h1 {
-  font-size: 40px;
+  font-size: 48px;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .hero-content p {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 30px;
 }
 
 .btn-primary {
-  background: #fff;
-  color: #3B82F6;
+  background: #2f80ed; /* Accent blue from loanproducts */
+  color: #fff;
   padding: 12px 24px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s;
+  display: inline-block; /* For padding to work correctly */
 }
 
 .btn-primary:hover {
-  background: #f0f0f0;
+  background: #1a5bb0; /* Darker shade on hover */
 }
 
-.hero-image img {
-  width: 320px;
-  animation: bounce 2s infinite;
-}
-
-/* Loan Products */
-.loan-products {
-  padding: 60px 80px;
+/* Content Sections */
+.content-section {
+  padding: 80px 80px;
   text-align: center;
+  border-bottom: 1px solid #eee; /* Separator between sections */
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  margin-top: 30px;
+.content-section:nth-of-type(even) {
+  background: #f5f0ff; /* Light purple for alternating sections */
 }
 
-.card {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+.content-section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #3a0f7a; /* Darker purple for headings */
 }
 
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card img {
-  width: 80px;
-  margin-bottom: 15px;
-}
-
-/* How it works */
-.how-it-works {
-  background: #f0f4ff;
-  padding: 60px 80px;
-  text-align: center;
-}
-
-.steps {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-}
-
-.step {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 20%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.content-section p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #555;
 }
 
 /* Footer */
 footer {
-  background: linear-gradient(90deg, #3B82F6, #9333EA);
+  background: linear-gradient(90deg, #3a0f7a, #7b2cc0); /* Purple gradient */
   color: #fff;
   padding: 40px 80px 20px;
-  margin-top: 50px;
-  animation: fadeInUp 1.5s ease;
+  margin-top: 0; /* Remove top margin as sections provide spacing */
 }
 
 .footer-content {
@@ -162,18 +138,36 @@ footer {
   opacity: 0.8;
 }
 
-/* Animations */
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header, .hero-section, .content-section, footer {
+    padding: 15px 20px;
+  }
 
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
+  header nav {
+    display: none; /* Hide nav on smaller screens, could add a hamburger menu if needed */
+  }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .content-section h2 {
+    font-size: 28px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
 }

@@ -1,0 +1,92 @@
+<header>
+<div class="logo">🏛 MicroLoan</div>
+<nav>
+<a routerLink="/user/home">Home</a>
+<a routerLink="/user/loanproducts">Loan Products</a>
+<a routerLink="/user/applications">Applications</a>
+<a routerLink="/user/repayments">Repayments</a>
+<a routerLink="/user/notifications">Notifications</a>
+<a routerLink="/user/login" class="login">Login</a>
+<a routerLink="/user/register" class="register">Register</a>
+</nav>
+</header>
+
+<main class="container">
+<section class="loan-details-section">
+<button class="back-button" (click)="goBack()">&leftarrow; Back to Repayments</button>
+<h2 *ngIf="loan">{{ loan.name }} - #{{ loan.accountNumber }}</h2>
+
+<div class="loan-summary-cards" *ngIf="loan">
+<div class="summary-card">
+<h3>Interest Rate</h3>
+<p>{{ loan.interestRate }}%</p>
+</div>
+<div class="summary-card">
+<h3>Tenure</h3>
+<p>{{ loan.tenure }} months</p>
+</div>
+<div class="summary-card">
+<h3>EMI Amount</h3>
+<p>₹ {{ loan.emiAmount | number:'1.2-2' }}</p>
+</div>
+<div class="summary-card">
+<h3>Next Due Date</h3>
+<p>{{ nextDueDate | date:'dd MMM yyyy' }}</p>
+</div>
+<div class="summary-card">
+<h3>Remaining Principal</h3>
+<p>₹ {{ remainingPrincipal | number:'1.2-2' }}</p>
+</div>
+</div>
+</section>
+
+<section class="amortization-schedule-section">
+<h2>Amortization Schedule</h2>
+<div class="export-buttons">
+<button class="btn btn-secondary" (click)="exportScheduleAsCsv()">Export as CSV</button>
+<button class="btn btn-secondary" (click)="exportScheduleAsPdf()">Export as PDF</button>
+</div>
+
+<table class="repayment-table">
+<thead>
+<tr>
+<th>EMI No.</th>
+<th>Due Date</th>
+<th>Amount Due</th>
+<th>Principal</th>
+<th>Interest</th>
+<th>Penalty</th>
+<th>Days Past Due</th>
+<th>Balance</th>
+<th>Status</th>
+<th>Payment Date</th>
+<th>Amount Paid</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let repayment of amortizationSchedule" [ngClass]="{'overdue-row': repayment.status.startsWith('Overdue')}">
+<td>{{ repayment.id }}</td>
+<td>{{ repayment.dueDate | date:'dd MMM yyyy' }}</td>
+<td>₹ {{ repayment.amountDue | number:'1.2-2' }}</td>
+<td>₹ {{ repayment.principalComponent | number:'1.2-2' }}</td>
+<td>₹ {{ repayment.interestComponent | number:'1.2-2' }}</td>
+<td>₹ {{ repayment.penaltyAmount ? (repayment.penaltyAmount | number:'1.2-2') : '—' }}</td>
+<td>{{ repayment.daysPastDue ? repayment.daysPastDue : '—' }}</td>
+<td>₹ {{ repayment.balance | number:'1.2-2' }}</td>
+<td>
+<span [ngClass]="{
+              'status-paid': repayment.status === 'Paid',
+              'status-pending': repayment.status === 'Pending',
+              'status-overdue': repayment.status.startsWith('Overdue')
+            }">{{ repayment.status }}</span>
+</td>
+<td>{{ repayment.paymentDate ? (repayment.paymentDate | date:'dd MMM yyyy') : '—' }}</td>
+<td>₹ {{ repayment.amountPaid ? (repayment.amountPaid | number:'1.2-2') : '—' }}</td>
+</tr>
+<tr *ngIf="amortizationSchedule.length === 0">
+<td colspan="11" class="no-data">No amortization schedule found for this loan.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</main>

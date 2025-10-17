@@ -27,6 +27,22 @@ body {
   font-weight: bold;
 }
 
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.brand .logo {
+  font-size: 2.5rem; /* Increased from 2rem to 2.5rem */
+  margin-right: 10px;
+}
+.brand-name {
+  font-size: 1.8rem; /* Added font-size for brand-name */
+  font-weight: bold; /* Ensures brand name is bold */
+}
+
 /* Input groups with icons */
 .input-group {
   display: flex;
@@ -52,7 +68,7 @@ body {
 }
 
 .input-group input::placeholder {
-  color: #ddd;
+  color: #080808;
 }
 
 /* Button */
@@ -93,7 +109,7 @@ button:hover {
 }
 
 .register a {
-  color: #fff;
+  color: #d10beb;
   font-weight: bold;
   text-decoration: none;
 }

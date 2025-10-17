@@ -7,9 +7,14 @@ import lombok.*;
 @AllArgsConstructor
 public class UserDTO {
     private Long id;
-    private String firstName;
-    private String lastName;
+
+    // Combine first and last name into one field (like your Angular form)
+    private String fullname;
+
     private String email;
     private String phone;
-    private String address;
+
+    // Include password and confirm password for signup
+    private String password;
+    private String confirmPassword;
 }

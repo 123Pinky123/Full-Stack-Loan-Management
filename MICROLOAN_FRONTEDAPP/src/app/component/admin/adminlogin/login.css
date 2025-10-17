@@ -74,11 +74,6 @@ button {
   border-radius: 30px;
   margin-top: 20px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #f0f0f0;
 }
 
 /* Options row */
