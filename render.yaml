@@ -1,0 +1,20 @@
+# render.yaml - Full-stack Loan Management deployment
+
+services:
+  # Backend Service - Spring Boot
+  - type: web
+    name: loan-management-backend
+    env: java
+    buildCommand: "./springapp/mvnw clean package -DskipTests"
+    startCommand: "java -jar springapp/target/springapp-0.0.1-SNAPSHOT.jar"
+    plan: free
+    autoDeploy: true
+
+  # Frontend Service - Angular
+  - type: web
+    name: loan-management-frontend
+    env: node
+    buildCommand: "cd MICROLOAN_FRONTENDAPP && npm install && npm run build"
+    startCommand: "npx serve -s MICROLOAN_FRONTENDAPP/dist/MICROLOAN_FRONTENDAPP"
+    plan: free
+    autoDeploy: true
