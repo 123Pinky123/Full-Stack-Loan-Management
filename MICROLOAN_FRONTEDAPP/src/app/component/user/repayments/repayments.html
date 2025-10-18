@@ -1,0 +1,119 @@
+<header>
+  <div class="logo">🏛 MicroLoan</div>
+  <nav>
+    <a routerLink="/user/home">Home</a>
+    <a routerLink="/user/loanproducts">Loan Products</a>
+    <a routerLink="/user/applications">Applications</a>
+    <a routerLink="/user/repayments">Repayments</a>
+    <a routerLink="/user/notifications">Notifications</a>
+    <a routerLink="/user/login" class="login">Login</a>
+    <a routerLink="/user/register" class="register">Register</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="repayment-summary-section">
+    <h2>Your Repayment Summary</h2>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <h3>Total Outstanding</h3>
+        <p>₹ {{ repaymentSummary.totalOutstanding | number:'1.2-2' }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Upcoming EMI</h3>
+        <p>₹ {{ repaymentSummary.upcomingEMI | number:'1.2-2' }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Total Paid</h3>
+        <p>₹ {{ repaymentSummary.totalPaid | number:'1.2-2' }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="make-payment-section">
+    <h2>Make a New Payment</h2>
+    <form [formGroup]="repaymentForm" (ngSubmit)="makePayment()" class="payment-form">
+      <div class="form-group">
+        <label for="loanSelect">Select Loan:</label>
+        <select id="loanSelect" formControlName="loanId" class="form-control">
+          <option [ngValue]="null" disabled>Choose a loan</option>
+          <option *ngFor="let loan of loans" [ngValue]="loan.id">
+            {{ loan.name }} (Outstanding: ₹{{ loan.outstanding | number:'1.2-2' }})
+          </option>
+        </select>
+        <div *ngIf="repaymentForm.get('loanId')?.invalid && repaymentForm.get('loanId')?.touched" class="error-message">
+          Loan selection is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="amountInput">Payment Amount:</label>
+        <input type="number" id="amountInput" formControlName="amount" class="form-control" placeholder="Enter amount" />
+        <div *ngIf="repaymentForm.get('amount')?.invalid && repaymentForm.get('amount')?.touched" class="error-message">
+          <span *ngIf="repaymentForm.get('amount')?.errors?.['required']">Amount is required.</span>
+          <span *ngIf="repaymentForm.get('amount')?.errors?.['min']">Amount must be at least 1.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="repaymentForm.invalid">Submit Payment</button>
+    </form>
+  </section>
+
+  <section class="repayment-history-section">
+    <h2>Repayment History</h2>
+    <table class="repayment-table">
+      <thead>
+        <tr>
+          <th>Loan ID</th>
+          <th>Due Date</th>
+          <th>Amount Due</th>
+          <th>Status</th>
+          <th>Payment Date</th>
+          <th>Amount Paid</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let repayment of repayments">
+          <td>{{ getLoanName(repayment.loanId) }}</td>
+          <td>{{ repayment.dueDate | date:'mediumDate' }}</td>
+          <td>₹ {{ repayment.amountDue | number:'1.2-2' }}</td>
+          <td>
+            <span [ngClass]="{
+              'status-paid': repayment.status === 'Paid',
+              'status-pending': repayment.status === 'Pending',
+              'status-overdue': repayment.status === 'Overdue'
+            }">{{ repayment.status }}</span>
+          </td>
+          <td>{{ repayment.paymentDate ? (repayment.paymentDate | date:'mediumDate') : 'N/A' }}</td>
+          <td>₹ {{ repayment.amountPaid ? (repayment.amountPaid | number:'1.2-2') : 'N/A' }}</td>
+          <td>
+            <button *ngIf="repayment.status !== 'Paid'" class="btn btn-sm btn-secondary" (click)="selectLoanForPayment(repayment)">Pay Now</button>
+            <button *ngIf="repayment.status === 'Paid'" class="btn btn-sm btn-tertiary" (click)="viewLoanDetails(repayment.loanId)">View Details</button>
+          </td>
+        </tr>
+        <tr *ngIf="repayments.length === 0">
+          <td colspan="7" class="no-data">No repayment records found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>© <strong>MicroLoan</strong> — All rights reserved</div>
+    <div class="footer-links">
+      <a (click)="showFooterContent('terms')">Terms</a> · <a (click)="showFooterContent('privacy')">Privacy</a> · <a (click)="showFooterContent('contact')">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Footer Content Display -->
+<div class="footer-content-display" *ngIf="selectedFooterContent">
+  <div class="container">
+    <button class="back-button" (click)="hideFooterContent()">&leftarrow; Back</button>
+    <h2>{{ selectedFooterContent.title }}</h2>
+    <p>{{ selectedFooterContent.text }}</p>
+  </div>
+</div>

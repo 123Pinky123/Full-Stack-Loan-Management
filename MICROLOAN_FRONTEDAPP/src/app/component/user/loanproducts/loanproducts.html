@@ -1,0 +1,65 @@
+<section class="hero" id="home-hero">
+  <div class="container hero-inner">
+    <div class="hero-left">
+      <h1>Apply for a Loan<br /><span class="muted">in Minutes</span></h1>
+      <p class="lead">Fast approvals, flexible tenures — pick a product and apply in few clicks.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" routerLink="/user/applications">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <section class="products-section" id="loan-products">
+    <h2 class="section-title">Loan Products</h2>
+
+    <div class="cards-grid">
+      <article class="product-card" *ngFor="let p of products">
+        <div class="card-icon">{{ p.icon }}</div>
+        <h3>{{ p.title }}</h3>
+        <p class="desc">{{ p.description }}</p>
+        <div class="card-actions">
+          <a class="small-btn" (click)="openDetails(p)">Details</a>
+          <a class="outline-btn" (click)="handleApply(p.key)">Apply Now</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="product-details" *ngIf="selectedProduct">
+      <button class="back-button" (click)="closeDetails()">&leftarrow; Back to Products</button>
+      <h2 class="section-title">{{ selectedProduct.title }}</h2>
+      <p>{{ selectedProduct.longDescription }}</p>
+
+      <div class="details-grid">
+        <div class="details-block">
+          <h4>Highlights</h4>
+          <ul>
+            <li *ngFor="let h of selectedProduct.highlights">{{ h }}</li>
+          </ul>
+        </div>
+        <div class="details-block">
+          <h4>Eligibility</h4>
+          <ul>
+            <li *ngFor="let e of selectedProduct.eligibility">{{ e }}</li>
+          </ul>
+        </div>
+        <div class="details-block">
+          <h4>Typical Ranges</h4>
+          <ul>
+            <li>Amount: {{ selectedProduct.typical.amount }}</li>
+            <li>Tenure: {{ selectedProduct.typical.tenure }}</li>
+            <li>Rate: {{ selectedProduct.typical.rate }}</li>
+          </ul>
+        </div>
+        <div class="details-block">
+          <h4>Documents</h4>
+          <ul>
+            <li *ngFor="let d of selectedProduct.documents">{{ d }}</li>
+          </ul>
+        </div>
+      </div>
+      <a class="btn-primary" (click)="handleApply(selectedProduct.key)">Apply Now</a>
+    </div>
+  </section>
+</main>

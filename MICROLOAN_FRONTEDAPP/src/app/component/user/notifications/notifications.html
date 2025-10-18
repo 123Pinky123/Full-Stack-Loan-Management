@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="notifications.css">
+</head>
+<body>
+    <div class="notification-page-container">
+        <div class="notification-box">
+            <h1>Notifications</h1>
+
+            <div *ngFor="let notification of notifications | slice:0:(showAll ? notifications.length : 2)" 
+                 class="notification-item {{ notification.type }}" 
+                 [ngClass]="{'has-action': notification.action}" 
+                 (click)="performAction(notification)">
+                <img *ngIf="notification.type === 'success'" src="https://img.icons8.com/fluent/48/000000/checked--v2.png" alt="Success Icon">
+                <img *ngIf="notification.type === 'warning'" src="https://img.icons8.com/fluent/48/000000/exclamation-mark.png" alt="Warning Icon">
+                <img *ngIf="notification.type === 'info'" src="https://img.icons8.com/fluent/48/000000/info.png" alt="Info Icon">
+                <img *ngIf="notification.type === 'error'" src="https://img.icons8.com/fluent/48/000000/delete-sign.png" alt="Error Icon">
+                <div class="notification-content">
+                    <p class="notification-message">{{ notification.message }}</p>
+                    <span class="notification-timestamp">{{ notification.timestamp | date:'medium' }}</span>
+                    <button *ngIf="notification.action" class="notification-action-btn" (click)="performAction(notification); $event.stopPropagation()">
+                        {{ notification.action.label }}
+                    </button>
+                </div>
+            </div>
+
+            <button class="view-all-button" (click)="toggleShowAll()" *ngIf="notifications.length > 2 && !showAll">
+                View All Notifications ({{ notifications.length - 2 }} more)
+            </button>
+            <button class="view-all-button" (click)="toggleShowAll()" *ngIf="notifications.length > 2 && showAll">
+                Hide Notifications
+            </button>
+        </div>
+    </div>
+</body>
+</html>

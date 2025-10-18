@@ -1,0 +1,143 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+
+/* Background (same as your login) */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex; /* Changed from grid to flex */
+  justify-content: center; /* Added to match login.css */
+  align-items: center; /* Added to match login.css */
+  /* Replace URL below with your image path if local */
+  background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1470&q=80')
+  no-repeat center center/cover;
+  color: white; /* Changed to white for visibility */
+}
+
+/* Glassmorphism Login Box */
+.login-box { /* Changed from .register-card to .login-box */
+  width: 360px; /* Changed from 480px to 360px to match login-box */
+  /* max-width: 92%; Removed as not present in login.css */
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 40px; /* Changed from 34px 28px to 40px to match login-box */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  text-align: center;
+  color: #fff;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px; /* Aligned with login.css */
+}
+.logo { font-size: 2.5rem; /* Increased from 1.6rem to 2.5rem */ margin-right: 10px; /* Added to align with login.css */}
+.brand-name { font-weight: bold; letter-spacing: 0.2px; font-size: 1.8rem; /* Added font-size for brand-name */ }
+
+/* Title */
+.login-box h2 { /* Changed from .register-card h1 to .login-box h2 */
+  font-size: 28px;
+  margin-bottom: 25px; /* Aligned with login.css */
+  font-weight: 700;
+  color: white; /* Changed from #080808 to white for better visibility */
+}
+.subtitle {
+  color: white; /* Changed from rgba(9, 9, 9, 0.973) to white for better visibility */
+  /* margin-bottom: 18px; Removed to align spacing with login.css */
+}
+
+/* Form & inputs */
+.input-group{
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.2);
+  margin: 12px 0;
+  border-radius: 30px;
+  padding: 10px 15px; /* Aligned padding with login.css */
+  border: none; /* Aligned border with login.css */
+}
+.input-group:focus-within {
+  background: rgba(255, 255, 255, 0.88);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.input-group .icon {
+  min-width: 28px;
+  text-align: center;
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+.input-group input{
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+  width: 500%;
+}
+
+.input-group input::placeholder{
+  /* Default on dark translucent background: light placeholder for contrast */
+  color: rgba(255,255,255,0.75);
+}
+
+/* Improve contrast when the input group is focused (background becomes light) */
+.input-group:focus-within input{
+  color: #080808;
+}
+.input-group:focus-within input::placeholder{
+  color: #555;
+}
+
+/* Ensure password visibility toggle remains visible in both states */
+.password-toggle{
+  margin-left: 8px;
+  cursor: pointer;
+  color: #fff;
+}
+.input-group:focus-within .password-toggle{
+  color: #080808;
+}
+
+/* Button */
+.btn {
+  margin-top: 6px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: white; /* Changed from #ffffff40 to white */
+  color: purple;            /* purple-ish text like your login button */
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(90,34,143,0.12);
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(240, 238, 241, 0.16); }
+
+/* login link */
+.login-link {
+  margin-top: 16px;
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+}
+.login-link a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 6px;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+  .login-box { padding: 26px 18px; } /* Changed from .register-card to .login-box and adjusted padding */
+  .input-group { padding: 10px 12px; border-radius: 26px; }
+  .btn { padding: 12px; }
+}

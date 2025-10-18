@@ -1,0 +1,78 @@
+<header>
+  <div class="logo">🏛 MicroLoan</div>
+  <nav>
+    <a routerLink="/landingpage" routerLinkActive="active">Home</a>
+    <a routerLink="/user/loanproducts" routerLinkActive="active" *ngIf="isLoggedIn">Loan Products</a>
+    <a routerLink="/user/applications" routerLinkActive="active" *ngIf="isLoggedIn">Applications</a>
+    <a routerLink="/user/repayments" routerLinkActive="active" *ngIf="isLoggedIn">Repayments</a>
+    <a routerLink="/user/notifications" routerLinkActive="active" *ngIf="isLoggedIn">Notifications</a>
+
+    <a routerLink="/user/login" class="login" routerLinkActive="active" *ngIf="!isLoggedIn">Login</a>
+    <a routerLink="/user/register" class="register" routerLinkActive="active" *ngIf="!isLoggedIn">Register</a>
+    <a (click)="logout()" class="logout" *ngIf="isLoggedIn">Logout</a>
+  </nav>
+</header>
+
+<section id="home-hero" class="hero-section">
+  <div class="hero-content">
+    <h1>Welcome to MicroLoan</h1>
+    <p *ngIf="!isLoggedIn">Your trusted partner for financial solutions.</p>
+    <p *ngIf="isLoggedIn">Welcome back! Access your loan management dashboard.</p>
+
+    <a 
+      *ngIf="!isLoggedIn"
+      (click)="scrollToSection('loan-products')" 
+      class="btn-primary"
+    >
+      Explore Products
+    </a>
+
+    <a 
+      *ngIf="isLoggedIn"
+      routerLink="/user/loanproducts"
+      class="btn-primary"
+    >
+      View My Loans
+    </a>
+  </div>
+</section>
+
+<section id="loan-products" class="content-section">
+  <h2>Our Loan Products</h2>
+  <p>Explore various loan offerings — tailored for your needs.</p>
+</section>
+
+<section id="applications" class="content-section">
+  <h2>Your Applications</h2>
+  <p>Track your loan applications and apply for new ones.</p>
+</section>
+
+<section id="repayments" class="content-section">
+  <h2>Manage Repayments</h2>
+  <p>Check your repayment schedule and pay EMIs easily.</p>
+</section>
+
+<section id="notifications" class="content-section">
+  <h2>Notifications</h2>
+  <p>Stay updated with loan-related alerts and updates.</p>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <h3>MicroLoan</h3>
+      <p>Making finance simple and accessible for everyone.</p>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:support&#64;microloan.com">support&#64;microloan.com</a></p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Address: 123 Finance St, Mumbai, India</p>
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <p>🌐 Facebook | 🐦 Twitter | 📸 Instagram</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 MicroLoan. All Rights Reserved.</div>
+</footer>

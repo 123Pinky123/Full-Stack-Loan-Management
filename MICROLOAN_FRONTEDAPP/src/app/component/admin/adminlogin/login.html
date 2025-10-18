@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login Page</title>
+  <link rel="stylesheet" href="login.css">
+  <style>
+    /* Simple inline styles for demo purposes */
+    .login-box { max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+    .brand { text-align: center; margin-bottom: 20px; }
+    .input-group { margin-bottom: 15px; position: relative; }
+    .input-group input { width: 100%; padding: 10px; padding-left: 35px; }
+    .input-group .icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); }
+    .password-toggle { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; }
+    .error-message { color: red; font-size: 0.9em; }
+    button { width: 100%; padding: 10px; margin-top: 10px; }
+    .register { text-align: center; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <div class="brand">
+      <span class="logo">👑</span>
+      <span class="brand-name">MicroLoan Admin</span>
+    </div>
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <span class="icon">📧</span>
+        <input type="email" id="email" placeholder="Enter Email" required>
+        <div id="emailError" class="error-message" style="display:none;"></div>
+      </div>
+
+      <div class="input-group">
+        <span class="icon">🔒</span>
+        <input type="password" id="password" placeholder="Enter Password" required>
+        <span class="password-toggle" onclick="togglePasswordVisibility()">👁️</span>
+        <div id="passwordError" class="error-message" style="display:none;"></div>
+      </div>
+
+      <div class="options">
+        <label><input type="checkbox" id="rememberMe"> Remember me</label>
+        <a href="#" style="float:right;">Forgot password?</a>
+      </div>
+
+      <div id="errorMessage" class="error-message" style="display:none;"></div>
+
+      <button type="submit" id="loginBtn">Login</button>
+
+      <div class="register">
+        <a href="/user/login.html">User Login</a> | 
+        <a href="/index.html">Back to Home</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const errorMessage = document.getElementById('errorMessage');
+
+    function togglePasswordVisibility() {
+      passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      let valid = true;
+      emailError.style.display = 'none';
+      passwordError.style.display = 'none';
+      errorMessage.style.display = 'none';
+
+      // Email validation
+      if (!emailInput.value.trim()) {
+        emailError.textContent = 'Email is required.';
+        emailError.style.display = 'block';
+        valid = false;
+      } else if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
+        emailError.textContent = 'Enter a valid email address.';
+        emailError.style.display = 'block';
+        valid = false;
+      }
+
+      // Password validation
+      if (!passwordInput.value.trim()) {
+        passwordError.textContent = 'Password is required.';
+        passwordError.style.display = 'block';
+        valid = false;
+      } else if (passwordInput.value.length < 6) {
+        passwordError.textContent = 'Password must be at least 6 characters.';
+        passwordError.style.display = 'block';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Fake login simulation
+      if(emailInput.value === 'admin@microloan.com' && passwordInput.value === 'admin123') {
+        alert('Login successful!');
+        window.location.href = '/admin/dashboard.html'; // redirect to dashboard
+      } else {
+        errorMessage.textContent = 'Invalid email or password.';
+        errorMessage.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

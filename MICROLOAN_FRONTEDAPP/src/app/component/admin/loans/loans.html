@@ -1,0 +1,161 @@
+<div class="loans-container">
+  <h1>Loan Management</h1>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="create-loan-btn" (click)="toggleCreate()">Create New Loan</button>
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search loans..." (input)="onSearchChange()">
+      <button (click)="onSearchChange()">Search</button>
+    </div>
+  </div>
+
+  <!-- Create Loan Form -->
+  <div *ngIf="creating" class="create-loan-form">
+    <div class="form-header">
+      <h3>Create New Loan</h3>
+      <button type="button" class="close-btn" (click)="toggleCreate()">×</button>
+    </div>
+
+    <form (ngSubmit)="createLoan()" class="loan-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Customer ID *</label>
+          <input type="number" [(ngModel)]="newLoan.customerId" name="customerId" required [class.error]="errors.customerId">
+          <div *ngIf="errors['customerId']" class="error-message">{{ errors['customerId'] }}</div>
+        </div>
+
+        <div class="form-group">
+          <label>Loan Amount *</label>
+          <input type="number" [(ngModel)]="newLoan.loanAmount" name="loanAmount" required [class.error]="errors.loanAmount">
+          <div *ngIf="errors.loanAmount" class="error-message">{{ errors.loanAmount }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Interest Rate (%) *</label>
+          <input type="number" [(ngModel)]="newLoan.interestRate" name="interestRate" required [class.error]="errors.interestRate">
+          <div *ngIf="errors.interestRate" class="error-message">{{ errors.interestRate }}</div>
+        </div>
+
+        <div class="form-group">
+          <label>Loan Term (months) *</label>
+          <input type="number" [(ngModel)]="newLoan.loanTerm" name="loanTerm" required [class.error]="errors.loanTerm">
+          <div *ngIf="errors.loanTerm" class="error-message">{{ errors.loanTerm }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Start Date *</label>
+          <input type="date" [(ngModel)]="newLoan.startDate" name="startDate" required [class.error]="errors.startDate">
+          <div *ngIf="errors.startDate" class="error-message">{{ errors.startDate }}</div>
+        </div>
+
+        <div class="form-group">
+          <label>Loan Status</label>
+          <select [(ngModel)]="newLoan.status" name="status" class="form-select">
+            <option value="PENDING">Pending</option>
+            <option value="APPROVED">Approved</option>
+            <option value="REJECTED">Rejected</option>
+            <option value="ACTIVE">Active</option>
+            <option value="COMPLETED">Completed</option>
+            <option value="DEFAULTED">Defaulted</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="save-btn" [disabled]="isSubmitting">
+          <span *ngIf="isSubmitting">Creating...</span>
+          <span *ngIf="!isSubmitting">Save Loan</span>
+        </button>
+        <button type="button" class="cancel-btn" (click)="toggleCreate()">Cancel</button>
+      </div>
+
+      <div *ngIf="message" class="message" [class.success]="isSuccess" [class.error]="!isSuccess">
+        {{ message }}
+      </div>
+    </form>
+  </div>
+
+  <!-- Loans Table (STATIC SAMPLE DATA) -->
+  <div class="loans-table-container">
+    <table class="loans-table">
+      <thead>
+        <tr>
+          <th>Loan ID</th>
+          <th>Customer ID</th>
+          <th>Loan Amount</th>
+          <th>Interest Rate</th>
+          <th>Loan Term</th>
+          <th>Start Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loan 1 -->
+        <tr>
+          <td>1</td>
+          <td>101</td>
+          <td>500,000</td>
+          <td>8.5%</td>
+          <td>60 months</td>
+          <td>2023-05-15</td>
+          <td><span class="status pending">PENDING</span></td>
+          <td>
+            <button class="action-btn edit-btn">Edit</button>
+            <button class="action-btn delete-btn">Delete</button>
+          </td>
+        </tr>
+
+        <!-- Loan 2 -->
+        <tr>
+          <td>2</td>
+          <td>102</td>
+          <td>750,000</td>
+          <td>7.9%</td>
+          <td>72 months</td>
+          <td>2023-01-10</td>
+          <td><span class="status approved">APPROVED</span></td>
+          <td>
+            <button class="action-btn edit-btn">Edit</button>
+            <button class="action-btn delete-btn">Delete</button>
+          </td>
+        </tr>
+
+        <!-- Loan 3 -->
+        <tr>
+          <td>3</td>
+          <td>103</td>
+          <td>250,000</td>
+          <td>9.1%</td>
+          <td>36 months</td>
+          <td>2022-11-20</td>
+          <td><span class="status suspended">SUSPENDED</span></td>
+          <td>
+            <button class="action-btn edit-btn">Edit</button>
+            <button class="action-btn delete-btn">Delete</button>
+          </td>
+        </tr>
+
+        <!-- Loan 4 -->
+        <tr>
+          <td>4</td>
+          <td>104</td>
+          <td>900,000</td>
+          <td>6.8%</td>
+          <td>120 months</td>
+          <td>2024-04-01</td>
+          <td><span class="status completed">COMPLETED</span></td>
+          <td>
+            <button class="action-btn edit-btn">Edit</button>
+            <button class="action-btn delete-btn">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

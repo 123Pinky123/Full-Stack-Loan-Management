@@ -1,0 +1,76 @@
+
+<div class="reports-container">
+  <h1>Reports</h1>
+
+  <div class="dashboard-grid">
+    <!-- Loan Portfolio Section -->
+    <div class="main-card loan-portfolio">
+      <div class="card-header">
+        <div class="card-icon">💼</div>
+        <h2>Loan Portfolio</h2>
+      </div>
+      <div class="subcards-container">
+        <div class="subcard" (click)="onCardClick('active-loans')">
+          <h3>Active Loans</h3>
+          <p>View all currently active loan accounts and their status</p>
+          <button class="download-btn" (click)="$event.stopPropagation(); onDownload('active-loans')">Download PDF</button>
+        </div>
+        <div class="subcard" (click)="onCardClick('disbursements')">
+          <h3>Disbursements</h3>
+          <p>Track new loan disbursements and funding activities</p>
+          <button class="download-btn" (click)="$event.stopPropagation(); onDownload('disbursements')">Download PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repayments & EMI Section -->
+    <div class="main-card repayments-emi">
+      <div class="card-header">
+        <div class="card-icon">💳</div>
+        <h2>Repayments & EMI</h2>
+      </div>
+      <div class="subcards-container">
+        <div class="subcard" (click)="onCardClick('emi-collection')">
+          <h3>EMI Collection</h3>
+          <p>Monitor monthly EMI collections and payment schedules</p>
+          <button class="download-btn" (click)="$event.stopPropagation(); onDownload('emi-collection')">Download PDF</button>
+        </div>
+        <div class="subcard" (click)="onCardClick('prepayments')">
+          <h3>Prepayments</h3>
+          <p>Analyze early loan repayments and their impact</p>
+          <button class="download-btn" (click)="$event.stopPropagation(); onDownload('prepayments')">Download PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overdue & Default Section -->
+    <div class="main-card overdue-default">
+      <div class="card-header">
+        <div class="card-icon">⚠️</div>
+        <h2>Overdue & Default</h2>
+      </div>
+      <div class="subcards-container">
+        <div class="subcard" (click)="onCardClick('revenue')">
+          <h3>Revenue</h3>
+          <p>Track revenue from interest income and fees</p>
+          <button class="download-btn" (click)="$event.stopPropagation(); onDownload('revenue')">Download PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial & Accounting Section -->
+    <div class="main-card financial-accounting">
+      <div class="card-header">
+        <div class="card-icon">📈</div>
+        <h2>Financial & Accounting</h2>
+      </div>
+      <div class="subcards-container">
+        <div class="subcard" (click)="onCardClick('outstanding')">
+          <h3>Outstanding</h3>
+          <p>Monitor outstanding principal and accrued interest</p>
+          <button class="download-btn" (click)="$event.stopPropagation(); onDownload('outstanding')">Download PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

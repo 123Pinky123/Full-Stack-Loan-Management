@@ -1,0 +1,188 @@
+<div class="users-container">
+  <h1>User Management</h1>
+
+  <div class="controls">
+    <button class="create-user-btn" (click)="toggleCreate()">Create New User</button>
+    <div class="search-bar">
+      <input type="text" placeholder="Search users...">
+      <button>Search</button>
+    </div>
+  </div>
+
+  <!-- Create User Form -->
+  <div *ngIf="creating" class="create-user-form">
+    <div class="form-header">
+      <h3>Create New User</h3>
+      <button type="button" class="close-btn" (click)="toggleCreate()">×</button>
+    </div>
+    
+    <form (ngSubmit)="createUser()" class="user-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="username">Username *</label>
+          <input 
+            [(ngModel)]="newUser.username" 
+            name="username" 
+            id="username"
+            placeholder="Enter username" 
+            required 
+            class="form-input"
+            [class.error]="errors.username">
+          <div *ngIf="errors.username" class="error-message">{{ errors.username }}</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            [(ngModel)]="newUser.email" 
+            name="email" 
+            id="email"
+            type="email" 
+            placeholder="Enter email address" 
+            required 
+            class="form-input"
+            [class.error]="errors.email">
+          <div *ngIf="errors.email" class="error-message">{{ errors.email }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number *</label>
+          <input 
+            [(ngModel)]="newUser.phoneNumber" 
+            name="phoneNumber" 
+            id="phoneNumber"
+            type="tel" 
+            placeholder="Enter phone number" 
+            required 
+            class="form-input"
+            [class.error]="errors.phoneNumber">
+          <div *ngIf="errors.phoneNumber" class="error-message">{{ errors.phoneNumber }}</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="role">Role *</label>
+          <select 
+            [(ngModel)]="newUser.role" 
+            name="role" 
+            id="role"
+            required 
+            class="form-select"
+            [class.error]="errors.role">
+            <option value="">Select role</option>
+            <option value="admin">Admin</option>
+            <option value="loan_officer">Loan Officer</option>
+            <option value="customer">Customer</option>
+          </select>
+          <div *ngIf="errors.role" class="error-message">{{ errors.role }}</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select 
+            [(ngModel)]="newUser.status" 
+            name="status" 
+            id="status"
+            class="form-select">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="suspended">Suspended</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Auto-generated Password</label>
+          <div class="password-display">
+            <span class="password-text">{{ generatedPassword || 'Will be generated on save' }}</span>
+            <button type="button" class="regenerate-btn" (click)="generatePassword()">🔄</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="save-btn" [disabled]="isSubmitting">
+          <span *ngIf="isSubmitting">Creating...</span>
+          <span *ngIf="!isSubmitting">Save User</span>
+        </button>
+        <button type="button" class="cancel-btn" (click)="toggleCreate()">Cancel</button>
+      </div>
+
+      <div *ngIf="message" class="message" [class.success]="isSuccess" [class.error]="!isSuccess">
+        {{ message }}
+      </div>
+    </form>
+  </div>
+
+  <div class="users-table-container">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Address</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Date Created</th>
+          <th>Last Login</th>
+          <th>Permissions</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>101</td>
+          <td>Alice Wonderland</td>
+          <td>alice&#64;example.com</td>
+          <td>+1 (555) 123-4567</td>
+          <td>123 Fantasy Ln, Storybrook</td>
+          <td>Admin</td>
+          <td><span class="status active">Active</span></td>
+          <td>2023-01-15</td>
+          <td>2025-10-05 14:30</td>
+          <td>Full Access</td>
+          <td>
+            <button class="action-btn edit-btn">Edit</button>
+            <button class="action-btn delete-btn">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>102</td>
+          <td>Bob The Builder</td>
+          <td>bob&#64;example.com</td>
+          <td>+1 (555) 987-6543</td>
+          <td>456 Toolbelt Dr, Workville</td>
+          <td>Customer</td>
+          <td><span class="status inactive">Inactive</span></td>
+          <td>2023-02-20</td>
+          <td>2025-09-28 09:15</td>
+          <td>Limited</td>
+          <td>
+            <button class="action-btn edit-btn">Edit</button>
+            <button class="action-btn delete-btn">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>103</td>
+          <td>Charlie Chaplin</td>
+          <td>charlie&#64;example.com</td>
+          <td>+1 (555) 111-2222</td>
+          <td>789 Silent St, Movieland</td>
+          <td>Loan Officer</td>
+          <td><span class="status suspended">Suspended</span></td>
+          <td>2022-11-01</td>
+          <td>2024-07-10 11:00</td>
+          <td>Moderate</td>
+          <td>
+            <button class="action-btn edit-btn">Edit</button>
+            <button class="action-btn delete-btn">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

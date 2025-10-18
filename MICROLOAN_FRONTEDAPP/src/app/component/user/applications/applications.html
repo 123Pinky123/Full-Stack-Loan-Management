@@ -1,0 +1,205 @@
+<header>
+  <div class="logo">🏛 MicroLoan</div>
+  <nav>
+    <a (click)="scrollToSection('home-hero')">Home</a>
+    <a (click)="scrollToSection('loan-products')">Loan Products</a>
+    <a (click)="scrollToSection('applications')">Applications</a>
+    <a (click)="scrollToSection('repayments')">Repayments</a>
+    <a (click)="scrollToSection('notifications')">Notifications</a>
+    <a routerLink="/user/login" class="login">Login</a>
+    <a routerLink="/user/register" class="register">Register</a>
+  </nav>
+</header>
+
+<div class="application-container">
+  <h1 class="main-heading">Micro Loan</h1>
+  <h2 class="sub-heading">Loan Application</h2>
+  <p *ngIf="selectedType" class="selected-type">Selected Product: <strong>{{ selectedType | titlecase }}</strong></p>
+
+  <!-- Regular HTML form - no Angular submit function -->
+  <form class="loan-form">
+    <!-- 1. Personal Information -->
+    <section>
+      <h3>1. Personal Information</h3>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" required>
+      </div>
+      <div class="form-group">
+        <label for="fatherSpouseName">Father/Spouse Name</label>
+        <input type="text" id="fatherSpouseName">
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Others</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="maritalStatus">Marital Status</label>
+        <select id="maritalStatus" required>
+          <option value="">Select</option>
+          <option>Single</option>
+          <option>Married</option>
+          <option>Divorced</option>
+          <option>Widowed</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="residentialAddress">Residential Address</label>
+        <textarea id="residentialAddress" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="pan">PAN Number</label>
+        <input type="text" id="pan">
+      </div>
+      <div class="form-group">
+        <label for="aadhaar">Aadhaar Number</label>
+        <input type="text" id="aadhaar">
+      </div>
+      <div class="form-group">
+        <label for="passport">Passport Number (Optional)</label>
+        <input type="text" id="passport">
+      </div>
+      <div class="form-group">
+        <label for="voterId">Voter ID (Optional)</label>
+        <input type="text" id="voterId">
+      </div>
+    </section>
+
+    <!-- 2. Employment & Income -->
+    <section>
+      <h3>2. Employment & Income</h3>
+      <div class="form-group">
+        <label for="employmentStatus">Employment Status</label>
+        <select id="employmentStatus" required>
+          <option value="">Select</option>
+          <option>Salaried</option>
+          <option>Self-Employed</option>
+          <option>Unemployed</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="employerName">Employer / Business Name</label>
+        <input type="text" id="employerName">
+      </div>
+      <div class="form-group">
+        <label for="jobTitle">Job Title / Occupation</label>
+        <input type="text" id="jobTitle">
+      </div>
+      <div class="form-group">
+        <label for="income">Monthly Income</label>
+        <input type="number" id="income" required>
+      </div>
+      <div class="form-group">
+        <label for="startDate">Employment Start Date</label>
+        <input type="date" id="startDate">
+      </div>
+    </section>
+
+    <!-- 3. Loan Details -->
+    <section>
+      <h3>3. Loan Details</h3>
+      <div class="form-group">
+        <label for="loanProduct">Loan Product</label>
+        <select id="loanProduct" required>
+          <option value="">Select</option>
+          <option>Home</option>
+          <option>Education</option>
+          <option>Personal</option>
+          <option>Business</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="loanAmount">Loan Amount</label>
+        <input type="number" id="loanAmount" required>
+      </div>
+      <div class="form-group">
+        <label for="tenure">Tenure (Months)</label>
+        <input type="number" id="tenure" required>
+      </div>
+      <div class="form-group">
+        <label for="repaymentFrequency">Repayment Frequency</label>
+        <select id="repaymentFrequency" required>
+          <option value="">Select</option>
+          <option>Monthly</option>
+          <option>Bi-Monthly</option>
+          <option>Weekly</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- 4. Bank & Repayment Details -->
+    <section>
+      <h3>4. Bank & Repayment Details</h3>
+      <div class="form-group">
+        <label for="accountNumber">Bank Account Number</label>
+        <input type="text" id="accountNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="ifsc">IFSC / Bank Code</label>
+        <input type="text" id="ifsc" required>
+      </div>
+      <div class="form-group">
+        <label for="repaymentDate">Preferred Repayment Date</label>
+        <input type="date" id="repaymentDate">
+      </div>
+    </section>
+
+    <!-- 5. Documents -->
+    <section>
+      <h3>5. Documents</h3>
+      <div class="form-group">
+        <label for="idProof">ID Proof</label>
+        <input type="file" id="idProof" required>
+      </div>
+      <div class="form-group">
+        <label for="addressProof">Address Proof</label>
+        <input type="file" id="addressProof" required>
+      </div>
+      <div class="form-group">
+        <label for="incomeProof">Income Proof</label>
+        <input type="file" id="incomeProof" required>
+      </div>
+      <div class="form-group">
+        <label for="photo">Photo (Optional)</label>
+        <input type="file" id="photo">
+      </div>
+    </section>
+
+    <!-- 6. Declarations -->
+    <section>
+      <h3>6. Declarations & Consents</h3>
+      <div class="form-group checkbox-group">
+        <input type="checkbox" id="creditConsent" required>
+        <label for="creditConsent">I consent to pull credit score</label>
+      </div>
+      <div class="form-group checkbox-group">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">I agree to Terms & Conditions</label>
+      </div>
+    </section>
+
+    <!-- Normal HTML submit button -->
+    <button type="submit" class="submit-btn">Submit Application</button>
+  </form>
+</div>
